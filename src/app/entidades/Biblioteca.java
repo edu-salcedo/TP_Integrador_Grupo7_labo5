@@ -32,7 +32,6 @@ public class Biblioteca implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="BIBLIOTECA_ID")
 	private int id;
-	//@ManyToOne(cascade = {CascadeType.ALL},fetch=FetchType.EAGER)
 	@ManyToOne(cascade= {CascadeType.ALL},fetch=FetchType.EAGER)
 	@JoinColumn(name="LIBRO_ISBN")
 	private Libro libro;
@@ -99,72 +98,4 @@ public class Biblioteca implements Serializable{
 		return "Biblioteca [id=" + id + ", libro=" + libro + ", fechaAlta=" + fechaAlta + ", estado=" + estado.toString() + "]";
 	}
 
-	public static void Create(Biblioteca b) {
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
-		
-		ServicioBiblioteca servicio= (ServicioBiblioteca)appContext.getBean("servicioBiblioteca");
-		servicio.create(b);
-		
-		((ConfigurableApplicationContext)(appContext)).close();
-	}
-
-	public static List<Biblioteca> ReadAll() {
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
-		
-		ServicioBiblioteca servicio= (ServicioBiblioteca)appContext.getBean("servicioBiblioteca");
-		List<Biblioteca>lista=servicio.readAll();
-		
-		((ConfigurableApplicationContext)(appContext)).close();
-		return lista;
-	}
-	
-	public static List<Biblioteca> ReadByIdEstado(int id){
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
-		
-		ServicioBiblioteca servicio= (ServicioBiblioteca)appContext.getBean("servicioBiblioteca");
-		List<Biblioteca> lista =servicio.readByIdEstado(id);
-		
-		((ConfigurableApplicationContext)(appContext)).close();
-		
-		if(lista==null) 
-			System.out.println("No encontro");
-		else
-			System.out.println(lista.toString());
-		
-		return lista;
-	}
-
-	public static Biblioteca ReadOne(int id) {
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
-		
-		ServicioBiblioteca servicio= (ServicioBiblioteca)appContext.getBean("servicioBiblioteca");
-		Biblioteca b =servicio.readOne(id);
-		
-		((ConfigurableApplicationContext)(appContext)).close();
-		
-		if(b==null) 
-			System.out.println("No encontro");
-		else
-			System.out.println(b.toString());
-		
-		return b;
-	}
-	public static void Delete(Biblioteca b) {
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
-		
-		ServicioBiblioteca servicio= (ServicioBiblioteca)appContext.getBean("servicioBiblioteca");
-		servicio.delete(b);
-		
-		((ConfigurableApplicationContext)(appContext)).close();
-	}
-
-	public static void Update(Biblioteca b) {
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
-		
-		ServicioBiblioteca servicio= (ServicioBiblioteca)appContext.getBean("servicioBiblioteca");
-		servicio.update(b);
-		
-		((ConfigurableApplicationContext)(appContext)).close();
-		
-	}
 }

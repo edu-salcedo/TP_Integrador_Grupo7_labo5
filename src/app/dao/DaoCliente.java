@@ -21,7 +21,7 @@ public class DaoCliente implements IABML<Cliente>{
 		cHibernate = new ConfigHibernate();
 		session = cHibernate.abrirConexion();	
 		session.beginTransaction();	
-		obj.setNacimiento(Util.FormatDate(obj.getNacimiento()));
+		obj.setNacimiento(obj.getNacimiento());
 		session.save(obj);		
 		session.getTransaction().commit();
 		cHibernate.cerrarSession();

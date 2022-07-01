@@ -70,27 +70,6 @@ public class Usuario implements Serializable{
 		return "Usuario [id=" + id + ", nombre=" + nombre + ", password=" + password + "]";
 	}
 	
-	public static void Create (Usuario u) {
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
-		
-		ServicioUsuario servicio= (ServicioUsuario)appContext.getBean("servicioUsuario");
-		servicio.create(u);
-		
-		((ConfigurableApplicationContext)(appContext)).close();
-	}
-	/*
-	public static Usuario Login(Usuario u) {
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
-		
-		ServicioUsuario servicio= (ServicioUsuario)appContext.getBean("servicioUsuario");
-		Usuario usuario=servicio.login(u);
-		
-		((ConfigurableApplicationContext)(appContext)).close();
-		return usuario;
-		
-	}
-	*/
-	
 }
 
 

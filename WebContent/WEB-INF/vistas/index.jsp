@@ -51,7 +51,6 @@
 			<a href="cliente.html">cliente</a>
 			<a href="biblioteca.html">biblioteca</a>
 			<a href="prestamo.html">prestamo</a>
-			<a href="libro.html">libro</a>
 		</div>
 		
 	</div>

@@ -21,7 +21,7 @@ public class DaoLibro implements IABML<Libro>{
 	public void create(Libro obj) {
 		cHibernate = new ConfigHibernate();
 		session = cHibernate.abrirConexion();
-		obj.setFechaLanzamiento(Util.FormatDate(obj.getFechaLanzamiento()));		
+		obj.setFechaLanzamiento(obj.getFechaLanzamiento());		
 		session.beginTransaction();		
 		session.save(obj);		
 		session.getTransaction().commit();
@@ -56,7 +56,7 @@ public class DaoLibro implements IABML<Libro>{
 	public void update(Libro obj) {
 		cHibernate = new ConfigHibernate();
 		session = cHibernate.abrirConexion();
-		obj.setFechaLanzamiento(Util.FormatDate(obj.getFechaLanzamiento()));
+		obj.setFechaLanzamiento(obj.getFechaLanzamiento());
 		session.beginTransaction();
 		session.update(obj);
 		session.getTransaction().commit();

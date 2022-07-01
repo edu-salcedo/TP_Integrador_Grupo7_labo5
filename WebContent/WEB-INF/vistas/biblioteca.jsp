@@ -45,11 +45,6 @@
 				
 				</tfoot>
 			</table>
-		<!-- 
-			<c:forEach items="${listaBiblioteca}" var="item">
-				<h4>${item.toString()}</h4>
-			</c:forEach>
-		 -->
 		</div>
 		<div>
 			<a href="index.html">index</a>

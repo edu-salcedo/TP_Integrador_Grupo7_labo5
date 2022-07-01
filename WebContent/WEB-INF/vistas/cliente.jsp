@@ -20,6 +20,7 @@
 	   				<div>
 						<label>DNI</label>
 						<input type="hidden" value="${cliente.getId()}" name= "txtIdCliente">
+						<input type="hidden" value="modificar" name="hiddenAccion">
 						<input type="text" value="${cliente.getDni()}" name="txtDni">
 					</div>
 					<div>
@@ -71,6 +72,7 @@
 	   			</c:when>
 	   			
 	   			<c:otherwise>
+	   				<input type="hidden" value="crear" name="hiddenAccion">
 	   				<div>
 						<label>DNI</label>
 						<input type="text" name="txtDni">
@@ -138,7 +140,6 @@
 			<a href="clientes.html">clientes</a>
 			<a href="biblioteca.html">biblioteca</a>
 			<a href="prestamo.html">prestamo</a>
-			<a href="libro.html">libro</a>
 		</div>
 		
 	</div>

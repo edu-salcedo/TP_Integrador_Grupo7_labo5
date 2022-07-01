@@ -106,33 +106,16 @@ public class Libro implements Serializable{
 	}
 	
 	//toString
-		@Override
-		public String toString() {
-			return "Isbn: " + isbn + ", titulo: " + titulo + ", fecha de lanzamiento: " + fechaLanzamiento + ", idioma: "
-					+ idioma + ", cantidad de páginas: " + cantidadPaginas + ", autor: " + autor + ", descripción: " + descripcion
-					+ ", géneros: " + generos.toString() + ".";
-		}
-		
-		public String toStringLibroPropp() {
-			return "Isbn: " + isbn + ", titulo: " + titulo + ", fecha de lanzamiento: " + fechaLanzamiento + ", idioma: "
-					+ idioma + ", cantidad de páginas: " + cantidadPaginas + ", descripción: " + descripcion + ".";
-		}
-		
-		public static void Create(Libro l) {
-			ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
-			
-			ServicioLibro sn= (ServicioLibro)appContext.getBean("servicioLibro");
-			sn.create(l);
-			
-			((ConfigurableApplicationContext)(appContext)).close();
-		}
-
-		public static List<Libro> ReadAll() {
-			ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
-			ServicioLibro sn= (ServicioLibro)appContext.getBean("servicioLibro");
-			List<Libro>lista =sn.readAll();
-			((ConfigurableApplicationContext)(appContext)).close();
-			return lista;
-		}
-
+	@Override
+	public String toString() {
+		return "Isbn: " + isbn + ", titulo: " + titulo + ", fecha de lanzamiento: " + fechaLanzamiento + ", idioma: "
+				+ idioma + ", cantidad de páginas: " + cantidadPaginas + ", autor: " + autor + ", descripción: " + descripcion
+				+ ", géneros: " + generos.toString() + ".";
+	}
+	
+	public String toStringLibroPropp() {
+		return "Isbn: " + isbn + ", titulo: " + titulo + ", fecha de lanzamiento: " + fechaLanzamiento + ", idioma: "
+				+ idioma + ", cantidad de páginas: " + cantidadPaginas + ", descripción: " + descripcion + ".";
+	}
+	
 }

@@ -66,7 +66,6 @@
 		</div>
 		<div>
 			<a href="index.html">index</a>
-			<a href="libro.html">libro</a>
 			<a href="biblioteca.html">biblioteca</a>
 			<a href="cliente.html">cliente</a>
 			<a href="prestamo.html">prestamo</a>

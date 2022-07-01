@@ -50,16 +50,6 @@
 								<td> ${item.getEmail()}</td>
 								
 								<td> <a href="<c:url value='prestamoSeleccionarCliente-${item.id}-${biblioteca.getId()}.html' />">Seleccionar</a></td>
-								<!-- <td> <a href="<c:url value='PrestamoSeleccionarCliente-${item.id}.html' />">Seleccionar</a></td> -->
-								<!--
-								<td>
-									<a href="
-									<c:url value='PrestamoSeleccionarCliente.html'>
-										<c:param name="idCliente" value="${item.id}" />
-										<c:param name="idBiblioteca" value="${biblioteca.getId()}" />
-									</c:url>">Seleccionar</a>
-								</td>
-								-->
 							</tr>
 						</c:forEach>
 						</tbody>
@@ -73,7 +63,7 @@
 		
 			<div class="col">
 				<h3>Prestamo</h3>
-				<form method=get action="realizarPrestamo.html">
+				<form method=get action="realizarPrestamo.html" onsubmit="return validarCantidad();">
 					<div>
 						<label>Libro</label><br>
 						<label>ID: </label>
@@ -91,7 +81,15 @@
 					</div>
 					<div>
 						<label>Cantidad de dias</label>
-						<input type="text" name="txtCantidadDias">
+						<select name="cbCantidadDias">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+						</select>
 					</div>
 					<div>
 						<input type="submit" value="Finalizar">
@@ -108,4 +106,5 @@
 		</div>
 	</div>
 </body>
+
 </html>

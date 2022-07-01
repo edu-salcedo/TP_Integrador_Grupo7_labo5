@@ -17,110 +17,121 @@ import app.entidades.Biblioteca;
 import app.entidades.Cliente;
 import app.entidades.Prestamo;
 import app.resources.Config;
+import app.resources.Util;
+import app.servicio.ServicioBiblioteca;
+import app.servicio.ServicioCliente;
+import app.servicio.ServicioPrestamo;
 import app.controller.PrestamoController;
 @Controller
 public class PrestamoElegirCliente {
 	@Autowired
 	@Qualifier("modelAndView")
 	private ModelAndView vista;
+	@Autowired
+	@Qualifier("servicioBiblioteca")
+	private ServicioBiblioteca servicioBiblioteca;
+	@Autowired
+	@Qualifier("servicioCliente")
+	private ServicioCliente servicioCliente;
+	@Autowired
+	@Qualifier("servicioPrestamo")
+	private ServicioPrestamo servicioPrestamo;
+	
 	
 	@RequestMapping("prestamo-elegirCliente{ssoId}.html") //IR A PRESTAMO
 	public ModelAndView vistaPrestamoElegirCliente(@PathVariable Integer ssoId, String txtBuscar) {
-		vista = new ModelAndView();
-		vista.setViewName("prestamo-elegirCliente");
 		
-		Biblioteca biblioteca=Biblioteca.ReadOne(ssoId);
-		if(biblioteca==null) 
-			System.out.println("No encontro Biblioteca");
-		else
-			System.out.println(biblioteca.toString());
-		
-		List<Cliente>listaClientes;
-		if(txtBuscar!=null) {
-			listaClientes=Cliente.readMany(txtBuscar);
+		try 
+		{
+			Biblioteca biblioteca=servicioBiblioteca.readOne(ssoId);
+			if(biblioteca!=null) 
+				vista.addObject("biblioteca", biblioteca);
+			
+			List<Cliente>listaClientes;
+			if(txtBuscar!=null) 
+				listaClientes=servicioCliente.readMany(txtBuscar);
+			else 
+				listaClientes=servicioCliente.readAll();
+			
+			if(listaClientes!=null)
+				vista.addObject("listaClientes", listaClientes);
+			vista.setViewName("prestamo-elegirCliente");
+		} 
+		catch (Exception e) 
+		{
+			vista.addObject("error",e);
+			vista.setViewName("error");
 		}
-		else {
-			listaClientes=Cliente.readAll();
-		}
-		vista.addObject("biblioteca", biblioteca);
-		vista.addObject("listaClientes", listaClientes);
 		
 		return vista;
 	}
 	@RequestMapping("prestamoFiltrarClientes.html")
 	public ModelAndView filtrarClientes(String txtBuscar, Integer txtIdBiblioteca) {
-		vista = new ModelAndView();
-		
-		List<Cliente>lista;
-		if(txtBuscar!=null) {
-			lista=Cliente.readMany(txtBuscar);
+		try 
+		{
+			List<Cliente>listaClientes;
+			if(txtBuscar!=null) 
+				listaClientes=servicioCliente.readMany(txtBuscar);
+			else 
+				listaClientes=servicioCliente.readAll();
+			if(listaClientes!=null)
+				vista.addObject("listaClientes",listaClientes);
+
+			Biblioteca biblioteca=servicioBiblioteca.readOne(txtIdBiblioteca);
+			if(biblioteca!=null) 
+				vista.addObject("biblioteca",biblioteca);
+			vista.setViewName("prestamo-elegirCliente");
+		} 
+		catch (Exception e) 
+		{
+			vista.addObject("error",e);
+			vista.setViewName("error");
 		}
-		else {
-			lista=Cliente.readAll();
-		}
-		
-		Biblioteca biblioteca=Biblioteca.ReadOne(txtIdBiblioteca);
-		if(biblioteca==null) 
-			System.out.println("No encontro Biblioteca");
-		else
-			System.out.println(biblioteca.toString());
-		
-		vista.setViewName("prestamo-elegirCliente");
-		if(lista!=null)
-			vista.addObject("listaClientes",lista);
-		if(biblioteca!=null) 
-			vista.addObject("biblioteca",biblioteca);
 		return vista;
 	}
 	
-	//@RequestMapping("PrestamoSeleccionarCliente-{idCliente}.html")
-	//public ModelAndView seleccionarCliente(@PathVariable Integer idCliente,Integer txtIdBiblioteca) {
 	@RequestMapping("prestamoSeleccionarCliente-{idCliente}-{idBiblioteca}.html")
 	public ModelAndView seleccionarCliente(@PathVariable("idCliente") Integer idCliente,@PathVariable("idBiblioteca") Integer idBiblioteca) {
-		vista = new ModelAndView();
-			
-		Cliente c= Cliente.readOne(idCliente);
-		if(c==null) {
-			System.out.println("No encontro Cliente");
-		}
-		else {
-			System.out.println(c.toString());
-		}
-		
-		
-		Biblioteca biblioteca=Biblioteca.ReadOne(idBiblioteca);
-		//Biblioteca biblioteca=Biblioteca.ReadOne(txtIdBiblioteca); ->  prestamoSeleccionarCliente32.html
-		if(biblioteca==null) 
-			System.out.println("No encontro biblioteca");
-		else
-			System.out.println(biblioteca.toString());
-		
-		vista.addObject("biblioteca",biblioteca);
-		vista.addObject("clienteElegido",c);
-		vista.setViewName("prestamo-elegirCliente");
-			
+		try 
+		{
+			Cliente c= servicioCliente.readOne(idCliente);
+			Biblioteca biblioteca=servicioBiblioteca.readOne(idBiblioteca);
+			if(biblioteca!=null)
+				vista.addObject("biblioteca",biblioteca);
+			if(c!=null)
+				vista.addObject("clienteElegido",c);
+			vista.setViewName("prestamo-elegirCliente");
+		} 
+		catch (Exception e) 
+		{
+			vista.addObject("error",e);
+			vista.setViewName("error");
+		}	
 		return vista;
 	}
 	
 	@RequestMapping("realizarPrestamo.html")
-	public ModelAndView RealizarPrestamo(Integer txtClienteId, Integer txtIdBiblioteca, Integer txtCantidadDias) {
-		ModelAndView vista = new ModelAndView();
+	public ModelAndView RealizarPrestamo(Integer txtClienteId, Integer txtIdBiblioteca, Integer cbCantidadDias) {
 		try 
 		{
-			Cliente cliente= Cliente.readOne(txtClienteId);
-			Biblioteca biblioteca=Biblioteca.ReadOne(txtIdBiblioteca);
+			Cliente cliente= servicioCliente.readOne(txtClienteId);
+			Biblioteca biblioteca=servicioBiblioteca.readOne(txtIdBiblioteca);
 			ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
 			Prestamo prestamo= (Prestamo)appContext.getBean("prestamo");
 			prestamo.setBiblioteca(biblioteca);
 			prestamo.setCliente(cliente);
-			prestamo.setCantidadDias(txtCantidadDias);
-			prestamo.setFechaPrestamo(new Date(2022,6,26));
-			Prestamo.Create(prestamo);
+			prestamo.setCantidadDias(cbCantidadDias);
+			prestamo.setFechaPrestamo(Util.Now());
+			servicioPrestamo.create(prestamo);
 			biblioteca.getEstado().setId(1);
-			Biblioteca.Update(biblioteca);
+			servicioBiblioteca.update(biblioteca);
+			
+			System.out.println("getFecha = "+ prestamo.getFechaPrestamo().toString());
+			System.out.println("getFecha + FormatDate= "+Util.FormatDate(prestamo.getFechaPrestamo()));
+			
 			
 			((ConfigurableApplicationContext)(appContext)).close();
-			List<Biblioteca>listaBiblioteca = Biblioteca.ReadAll();
+			List<Biblioteca>listaBiblioteca = servicioBiblioteca.readAll();
 			vista.addObject("listaBiblioteca", listaBiblioteca);
 			vista.addObject("clienteElegido",cliente);
 			vista.addObject("biblioteca",biblioteca);
@@ -128,17 +139,9 @@ public class PrestamoElegirCliente {
 		} 
 		catch (Exception e) 
 		{
+			vista.addObject("error",e);
 			vista.setViewName("error");
-			
-		}
-		
-		
-		if(txtCantidadDias==null) {
-			txtCantidadDias=-1;
-		}
-		
-		
-			
+		}	
 		return vista;
 	}
 	
