@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">edumaster</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/TP_Integrador_DB?createDatabaseIfNotExist=true</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hbm2ddl.auto">update</property>
+        <property name="show_sql">true</property>
+        
+        <mapping class="app.entidades.Autor"/>
+        <mapping class="app.entidades.Biblioteca"/>
+        <mapping class="app.entidades.Genero"/>
+        <mapping class="app.entidades.Libro"/>
+        <mapping class="app.entidades.Nacionalidad"/>
+        <mapping class="app.entidades.Cliente"/>
+        <mapping class="app.entidades.Prestamo"/>
+        <mapping class="app.entidades.Usuario"/>
+        <mapping class="app.entidades.Estado"/>
+    </session-factory>
+    
+</hibernate-configuration>
