@@ -2,12 +2,17 @@ package app.servicio;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 import app.dao.DaoGenero;
 import app.entidades.Genero;
 import app.interfaces.IABML;
 
 public class ServicioGenero implements IABML<Genero>{
-	private DaoGenero dao= new DaoGenero();
+	@Autowired
+	@Qualifier("daoGenero")
+	private DaoGenero dao;
 	
 	@Override
 	public void create(Genero obj) {

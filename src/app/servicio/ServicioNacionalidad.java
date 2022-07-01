@@ -2,12 +2,17 @@ package app.servicio;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 import app.dao.DaoNacionalidad;
 import app.entidades.Nacionalidad;
 import app.interfaces.IABML;
 
 public class ServicioNacionalidad implements IABML<Nacionalidad>{
-	private DaoNacionalidad dao = new DaoNacionalidad();
+	@Autowired
+	@Qualifier("daoNacionalidad")
+	private DaoNacionalidad dao;
 	@Override
 	public void create(Nacionalidad obj) {
 		dao.create(obj);

@@ -2,12 +2,17 @@ package app.servicio;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 import app.dao.DaoAutor;
 import app.entidades.Autor;
 import app.interfaces.IABML;
 
 public class ServicioAutor implements IABML<Autor>{
-	private DaoAutor dao= new DaoAutor();
+	@Autowired
+	@Qualifier("daoAutor")
+	private DaoAutor dao;
 	
 	@Override
 	public void create(Autor obj) {

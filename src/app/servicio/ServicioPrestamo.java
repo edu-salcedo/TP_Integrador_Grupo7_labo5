@@ -2,12 +2,17 @@ package app.servicio;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 import app.dao.DaoPrestamo;
 import app.entidades.Prestamo;
 import app.interfaces.IABML;
 
 public class ServicioPrestamo implements IABML <Prestamo>{
-	private DaoPrestamo dao = new DaoPrestamo();
+	@Autowired
+	@Qualifier("daoPrestamo")
+	private DaoPrestamo dao;
 	
 	@Override
 	public void create(Prestamo obj) {
