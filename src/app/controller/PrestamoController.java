@@ -1,5 +1,6 @@
 package app.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,27 +20,27 @@ public class PrestamoController {
 	
 	@RequestMapping("prestamo.html") //IR A PRESTAMO
 	public ModelAndView vistaPrestamo() {
-		vista = new ModelAndView();
-		vista.setViewName("prestamo");
-		
-		List<Biblioteca>listaBiblioteca=Biblioteca.ReadAll();
-		if(listaBiblioteca==null) 
-			System.out.println("No encontro Biblioteca");
-		else
-			System.out.println(listaBiblioteca.toString());
-		if(listaBiblioteca!=null)
+		try 
+		{
+			List<Biblioteca>listaBiblioteca=Biblioteca.ReadAll();
+			if(listaBiblioteca==null) 
+				listaBiblioteca= new ArrayList<Biblioteca>();
 			vista.addObject("listaBiblioteca",listaBiblioteca);
-		
+			vista.setViewName("prestamo");
+		} 
+		catch (Exception e) 
+		{
+			vista.addObject("error",e);
+			vista.setViewName("error");
+		}
 		return vista;
 	}
 	
 	@RequestMapping("cambiarEstadoBiblioteca-{ssoId}.html")
 	public ModelAndView cambiarEstadoBiblioteca(@PathVariable int ssoId) {
-		Biblioteca biblioteca= Biblioteca.ReadOne(ssoId);
-		if(biblioteca==null) {
-			System.out.println("No se encontro");
-		}
-		else {
+		try 
+		{
+			Biblioteca biblioteca= Biblioteca.ReadOne(ssoId);
 			if(biblioteca.getEstado().getId()==1) {
 				biblioteca.getEstado().setId(2);
 			}
@@ -47,23 +48,29 @@ public class PrestamoController {
 				biblioteca.getEstado().setId(1);
 			}
 			Biblioteca.Update(biblioteca);
+		} 
+		catch (Exception e) 
+		{
+			vista.addObject("error",e);
+			vista.setViewName("error");
 		}
+		
 		return vistaPrestamo();
 	} 
 	
 	@RequestMapping("mostrarPorIdEstadoPrestamo-{ssoId}.html") //IR A BIBLIOTECA
 	public ModelAndView vistaBibliotecaPorEstado(@PathVariable int ssoId) {
-		vista = new ModelAndView();
-		
-		List<Biblioteca>lista=Biblioteca.ReadByIdEstado(ssoId);
-		if(lista==null) 
-			System.out.println("No encontro Biblioteca");
-		else
-			System.out.println(lista.toString());
-		if(lista!=null)
+		try 
+		{
+			List<Biblioteca>lista=Biblioteca.ReadByIdEstado(ssoId);
 			vista.addObject("listaBiblioteca",lista);
-		
-		vista.setViewName("prestamo");
+			vista.setViewName("prestamo");
+		} 
+		catch (Exception e) 
+		{
+			vista.addObject("error",e);
+			vista.setViewName("error");
+		}
 		return vista;
 	}
 }
