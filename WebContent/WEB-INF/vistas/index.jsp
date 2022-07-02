@@ -10,50 +10,49 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" 
 	rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
 	 crossorigin="anonymous">
-	 <!-- JavaScript Bundle with Popper -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-	 integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-	  crossorigin="anonymous"></script>
+	 <script src="https://kit.fontawesome.com/067889c2a3.js" crossorigin="anonymous"></script>	
+	 	<link rel="stylesheet" href="./resources/css/login.css">
 </head>
 <body>
-	<div class="container">
-		<h1>Login</h1>
-		
+	<div class="main-container">
 		<c:choose>
-		    <c:when test="${usuarioLogeado==null || usuarioLogeado==''}">
-				<h4>${mensaje}</h4>
-		     	<form method="post" action="login.html">
-					<div>
-						<label>Usuario</label>
-						<input type="text" name="txtUsuario">
-					</div>
-					<div>
-						<label>Contraseña</label>
-						<input type="password" name="txtPassword">
-					</div>
-					<div>
-						<input type="submit" value="Ingresar" name="btnIngresar">
-					</div>
-				</form>
-		    </c:when>    
-		    <c:otherwise>
-		    	<div>
-		    		<h4>${mensaje}</h4>
+			<c:when test="${usuarioLogeado==null || usuarioLogeado==''}">
+				<div class="login-box">
+					<form method="post" action="login.html">
+
+						<h2 class="mt-3">Iniciar Sesion</h2>
+						<div>
+							<i class="fa-solid fa-user"></i>
+						</div>
+						<div>
+							<label class="my-2">Usuario</label> <input type="text"
+								class="m-auto form-control w-75" name="txtUsuario">
+						</div>
+						<div>
+							<label>Contraseña</label> <input type="password"
+								class="m-auto form-control w-75" name="txtPassword">
+						</div>
+						<div>
+							<input type="submit" class="mt-3" value="Ingresar" name="btnIngresar">
+						</div>
+						<h4 class="mb-3">${mensaje}</h4>
+					</form>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div>
+					<h4>${mensaje}</h4>
 					<h4>Usuario: ${usuarioLogeado}</h4>
 					<a href="logout.html">logout</a>
 				</div>
-		       
-		    </c:otherwise>
+
+			</c:otherwise>
 		</c:choose>
-		
-		<div>
-			<a href="clientes.html">clientes</a>
-			<a href="cliente.html">cliente</a>
-			<a href="biblioteca.html">biblioteca</a>
-			<a href="prestamo.html">prestamo</a>
-			<a href="libro.html">libro</a>
-		</div>
-		
 	</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+		crossorigin="anonymous"></script>
+
 </body>
 </html>

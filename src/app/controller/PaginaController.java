@@ -60,10 +60,10 @@ public class PaginaController {
 		return vista;
 	}
 	
-	@RequestMapping("index.html") // IR A INDEX
+	@RequestMapping("home.html") // IR A INDEX
 	public ModelAndView vistaIndex() {
 		vista = new ModelAndView();
-		vista.setViewName("index");
+		vista.setViewName("home");
 		return vista;
 	}
 	

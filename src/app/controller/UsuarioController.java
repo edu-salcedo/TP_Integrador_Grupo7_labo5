@@ -33,7 +33,7 @@ public class UsuarioController {
 			else {
 				vista.addObject("usuarioLogeado", "");
 			}
-			vista.setViewName("index");
+			vista.setViewName("home");
 		} 
 		catch (Exception e) 
 		{

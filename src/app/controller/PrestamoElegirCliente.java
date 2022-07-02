@@ -1,6 +1,7 @@
 package app.controller;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,18 +30,18 @@ public class PrestamoElegirCliente {
 		vista = new ModelAndView();
 		vista.setViewName("prestamo-elegirCliente");
 		
+		List<Cliente>listaClientes;
 		Biblioteca biblioteca=Biblioteca.ReadOne(ssoId);
 		if(biblioteca==null) 
 			System.out.println("No encontro Biblioteca");
 		else
 			System.out.println(biblioteca.toString());
 		
-		List<Cliente>listaClientes;
 		if(txtBuscar!=null) {
 			listaClientes=Cliente.readMany(txtBuscar);
 		}
 		else {
-			listaClientes=Cliente.readAll();
+			listaClientes=new ArrayList<Cliente>();
 		}
 		vista.addObject("biblioteca", biblioteca);
 		vista.addObject("listaClientes", listaClientes);

@@ -5,51 +5,82 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Registrar prestamo</title>
+
+ <script src="https://kit.fontawesome.com/067889c2a3.js" crossorigin="anonymous"></script>	
+	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" 
+	rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+	 crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"/>
+  	<link rel="stylesheet" href="./resources/css/cliente.css">
+  	<link rel="stylesheet" href="./resources/css/prestamo.css">
 </head>
 <body>
-	<div class="container">
-		<h1>Elegir Cliente</h1>
-		<div>
-			<h4>Session: ${usuarioLogeado}</h4>
+
+	<div class="upbar d-flex">
+		<img src="./resources/img/logo.png" class="" alt="" />
+		<h4 class="mt-3">usuario : ${usuarioLogeado}</h4>
+	</div>
+
+	<div class="row-container">
+		<div class="wrapper">
+			<div class="sidebar">
+				<ul class="navbar-nav">
+					<i class="fa-solid fa-user-gear admin"></i>
+					<li><a href="home.html" class="nav-link"><i
+							class="fa-solid fa-house-chimney"></i> Home</a></li>
+					<li><a href="biblioteca.html" class="nav-link"><i
+							class="bi bi-collection-fill"></i> Biblioteca</a></li>
+					<li><a href="libro.html" class="nav-link"><i
+							class="fa-solid fa-book"></i> Libros</a></li>
+					<li><a href="clientes.html" class="nav-link"><i
+							class="fa-solid fa-user-large"></i> Clientes</a></li>
+					<li><a href="prestamo.html" class="nav-link"><i
+							class="fa-solid fa-hand-holding-dollar"></i> Préstamos</a></li>
+					<li><a href="index.html" class="nav-link"><i
+							class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a></li>
+				</ul>
+			</div>
 		</div>
-		<div class="row">
-			<div class="col">
-				<h3>Seleccionar Cliente</h3>
-				<div>
-					<form method=get action="prestamoFiltrarClientes.html">
-						<div>
-							<input type="text" name="txtBuscar">
+
+
+		<div class="main-container text-center">
+			<h2>Formulario Alta Prestamo</h2>
+			<div class="border p-1 bg bg-white border border-3 mx-5">
+				<form method=get action="prestamoFiltrarClientes.html">
+					<div class="d-flex justify-content-end">
+						<div class="buscar me-5 mt-2">
+							<input type="text" class=" border rounded-3" name="txtBuscar"
+								placeholder="buscar cliente"> <input type="submit"
+								class="btn btn-light btn-sm border" value="Buscar">
 						</div>
 						<div>
-							<input type="submit" value="Buscar">
+							<input type="hidden" name="txtIdBiblioteca"
+								value="${biblioteca.getId()}" readonly>
 						</div>
-						<div>
-							<input type="hidden" name="txtIdBiblioteca" value="${biblioteca.getId()}" readonly>
-						</div>
-					</form>
-				</div>
-				
-				<div>
-					<table>
-						<thead>
-							<tr>
-								<th>Nombre</th>
-								<th>Apellido</th>
-								<th>Nacionalidad</th>
-								<th>Email</th>
-								<th>Accion1</th>
-							</tr>
-						</thead>
-						<tbody>
+					</div>
+				</form>
+				<table class="table border border-3">
+					<thead>
+						<tr class="bg-primary p-2 text-dark bg-opacity-10">
+							<th scope="col">Nombre</th>
+							<th scope="col">Apellido</th>
+							<th scope="col">Nacionalidad</th>
+							<th scope="col">Email</th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody>
 						<c:forEach items="${listaClientes}" var="item">
 							<tr>
 								<td>${item.getNombre()}</td>
-								<td> ${item.getApellido()}</td>
-								<td> ${item.getNacionalidad().getDescripcion()}</td>
-								<td> ${item.getEmail()}</td>
-								
-								<td> <a href="<c:url value='prestamoSeleccionarCliente-${item.id}-${biblioteca.getId()}.html' />">Seleccionar</a></td>
+								<td>${item.getApellido()}</td>
+								<td>${item.getNacionalidad().getDescripcion()}</td>
+								<td>${item.getEmail()}</td>
+
+								<td><a
+									href="<c:url value='prestamoSeleccionarCliente-${item.id}-${biblioteca.getId()}.html' />">Seleccionar</a></td>
 								<!-- <td> <a href="<c:url value='PrestamoSeleccionarCliente-${item.id}.html' />">Seleccionar</a></td> -->
 								<!--
 								<td>
@@ -62,50 +93,53 @@
 								-->
 							</tr>
 						</c:forEach>
-						</tbody>
-						<tfoot>
-						
-						</tfoot>
-					</table>
-					
-				</div>
-			</div>
-		
-			<div class="col">
+					</tbody>
+				</table>
 				<h3>Prestamo</h3>
 				<form method=get action="realizarPrestamo.html">
-					<div>
-						<label>Libro</label><br>
-						<label>ID: </label>
-						<input type="text" name="txtIdBiblioteca" value="${biblioteca.getId()}" readonly>
-						<label>Titulo: </label>
-						<input type="text" name="txtTitulo" value="${biblioteca.getLibro().getTitulo()}" readonly>
-						<label>Autor: </label>
-						<input type="text" name="txtAutor" value="${biblioteca.getLibro().getAutor().getNombre()} ${biblioteca.getLibro().getAutor().getApellido()}" readonly>
-					</div>
-					<div>
-						<label>Cliente</label>
-						<input type="text" name="txtClienteId" value="${clienteElegido.getId()}" readonly>
-						<input type="text" name="txtCliente" value="${clienteElegido.getNombre()} ${clienteElegido.getApellido()}" readonly>
-						<input type="text" name="txtTelefono" value="${clienteElegido.getTelefono()}" readonly>
-					</div>
-					<div>
-						<label>Cantidad de dias</label>
-						<input type="text" name="txtCantidadDias">
-					</div>
-					<div>
-						<input type="submit" value="Finalizar">
+
+					<div class="px-5 py-2 box-prestamo">
+						<h5>Libro</h5>
+						<div class="d-flex justify-content-start my-3">
+							<label>ID:</label> <input type="text" class="border rounded-3"
+								name="txtIdBiblioteca" value="${biblioteca.getId()}" readonly>
+							<label>Titulo: </label> <input type="text"
+								class="border rounded-3" name="txtTitulo"
+								value="${biblioteca.getLibro().getTitulo()}" readonly> <label>Autor:
+							</label> <input type="text" class="border rounded-3 " name="txtAutor"
+								value="${biblioteca.getLibro().getAutor().getNombre()} ${biblioteca.getLibro().getAutor().getApellido()}"
+								readonly>
+						</div>
+						<h5>Cliente</h5>
+						<div class="d-flex justify-content-start">
+							<label>ID:</label> <input type="text" class="border rounded-3"
+								name="txtClienteId" value="${clienteElegido.getId()}" readonly>
+							<label>Nombre: </label> <input type="text"
+								class="border rounded-3" name="txtCliente"
+								value="${clienteElegido.getNombre()} ${clienteElegido.getApellido()}"
+								readonly> <label>Telefono: </label> <input type="text"
+								class="border rounded-3" name="txtTelefono"
+								value="${clienteElegido.getTelefono()}" readonly>
+						</div>
+						<div class="d-flex justify-content-start my-3">
+							<label>Cantidad dias</label> <input type="text"
+								class="border rounded-3 mx-3" name="txtCantidadDias">
+						</div>
+						<div>
+							<input type="submit" class="btn btn-primary " value="Finalizar">
+						</div>
 					</div>
 				</form>
 			</div>
 		</div>
-		<div>
-			<a href="index.html">index</a>
-			<a href="clientes.html">clientes</a>
-			<a href="biblioteca.html">biblioteca</a>
-			<a href="cliente.html">cliente</a>
-			<a href="libro.html">libro</a>
-		</div>
 	</div>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+	 integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+	  crossorigin="anonymous"></script>
+	
+	
+	
 </body>
 </html>
