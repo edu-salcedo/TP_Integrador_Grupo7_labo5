@@ -26,7 +26,8 @@ public class BibliotecaController {
 		try 
 		{
 			List<Biblioteca>listaBiblioteca=servicioBiblioteca.readAll();
-			vista.addObject("listaBiblioteca",listaBiblioteca);
+			if(listaBiblioteca!=null)
+				vista.addObject("listaBiblioteca",listaBiblioteca);
 			vista.setViewName("biblioteca");
 		} 
 		catch (Exception e) 
@@ -42,7 +43,8 @@ public class BibliotecaController {
 		try 
 		{
 			List<Biblioteca>lista=servicioBiblioteca.readByIdEstado(ssoId);
-			vista.addObject("listaBiblioteca",lista);
+			if(lista!=null)
+				vista.addObject("listaBiblioteca",lista);
 			vista.setViewName("biblioteca");
 		}
 		catch (Exception e)
@@ -58,8 +60,9 @@ public class BibliotecaController {
 		try 
 		{
 			Biblioteca b=servicioBiblioteca.readOne(ssoId);
-			Biblioteca.Delete(b);
-		} catch (Exception e) 
+			servicioBiblioteca.delete(b);
+		} 
+		catch (Exception e) 
 		{
 			vista.addObject("error",e);
 			vista.setViewName("error");

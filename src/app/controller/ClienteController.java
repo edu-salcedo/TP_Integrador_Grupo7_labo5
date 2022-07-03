@@ -41,8 +41,9 @@ public class ClienteController {
 		try 
 		{
 			List<Cliente>lista=servicioCliente.readAll();
+			if(lista!=null)
+				vista.addObject("listaClientes",lista);
 			vista.setViewName("clientes");
-			vista.addObject("listaClientes",lista);
 		} 
 		catch (Exception e) 
 		{
@@ -60,9 +61,9 @@ public class ClienteController {
 				lista=servicioCliente.readMany(txtBuscar);
 			else 
 				lista=servicioCliente.readAll();
+			if(lista!=null)
+				vista.addObject("listaClientes",lista);
 			vista.setViewName("clientes");
-			vista.addObject("listaClientes",lista);
-			
 		} 
 		catch (Exception e) 
 		{
@@ -79,14 +80,14 @@ public class ClienteController {
 			List<Nacionalidad>lista=servicioNacionalidad.readAll();
 			vista.clear();
 			vista.setViewName("cliente");
-			vista.addObject("listaNacionalidades",lista);
+			if(lista!=null)
+				vista.addObject("listaNacionalidades",lista);
 		}
 		catch (Exception e) 
 		{
 			vista.addObject("error",e);
 			vista.setViewName("error");
 		}
-		
 		return vista;
 	}
 	
@@ -95,29 +96,32 @@ public class ClienteController {
 			String txtDni,String txtNombre, String txtApellido,
 			Integer cbNacionalidad,String txtNacimiento,
 			String txtDireccion,String txtLocalidad,String txtEmail,
-			String txtTelefono, Integer txtIdCliente) {
+			String txtTelefono, Integer txtIdCliente, String hiddenAccion) {
 		try 
 		{
 			cliente.setApellido(txtApellido);
 			cliente.setDireccion(txtDireccion);
 			cliente.setDni(txtDni);
 			cliente.setEmail(txtEmail);
-			cliente.setNacimiento(Util.SplitDate(txtNacimiento));
+			cliente.setNacimiento(Util.FormatDate(Util.SplitDate(txtNacimiento)));
 			cliente.setNombre(txtNombre);
 			cliente.setTelefono(txtTelefono);
 			cliente.setLocalidad(txtLocalidad);
 			cliente.getNacionalidad().setId(cbNacionalidad);
-			if(txtIdCliente==null) {
-				servicioCliente.create(cliente);
+			System.out.println(hiddenAccion);
+			if(hiddenAccion.compareTo("modificar")==0) {
+				cliente.setId(txtIdCliente);
+				servicioCliente.update(cliente);
 			}
 			else {
-				servicioCliente.update(cliente);
+				servicioCliente.create(cliente);
 			}
 		} 
 		catch (Exception e) 
 		{
 			vista.addObject("error",e);
 			vista.setViewName("error");
+			e.getLocalizedMessage();
 		}
 		return vistaClientes();
 	}
@@ -128,9 +132,11 @@ public class ClienteController {
 		{
 			cliente=servicioCliente.readOne(ssoId);
 			List<Nacionalidad>lista=servicioNacionalidad.readAll();
-			vista.setViewName("cliente");
-			vista.addObject("listaNacionalidades",lista);
+			if(lista!=null)
+				vista.addObject("listaNacionalidades",lista);
 			vista.addObject("cliente", cliente);
+			vista.setViewName("cliente");
+			
 		} 
 		catch (Exception e) 
 		{
@@ -153,44 +159,7 @@ public class ClienteController {
 			vista.addObject("error",e);
 			vista.setViewName("error");
 		}
-		
 		return vistaClientes();
 	}
-	
-	
-	/*
-	@RequestMapping("mostrarCliente.html")
-	public ModelAndView mostrar(
-			String txtDni,String txtNombre, String txtApellido,
-			Integer cbNacionalidad,String txtNacimiento,
-			String txtDireccion,String txtLocalidad,String txtEmail,
-			String txtTelefono) {
-		ModelAndView vista = new ModelAndView();
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
-		
-		Cliente c= (Cliente)appContext.getBean("cliente");
-		c.setApellido(txtApellido);
-		c.setDireccion(txtDireccion);
-		c.setDni(txtDni);
-		c.setEmail(txtEmail);
-		String [] fecha=txtNacimiento.split("-");
-		c.setNacimiento(new Date(Integer.parseInt(fecha[0]),Integer.parseInt(fecha[1]),Integer.parseInt(fecha[2])));
-		c.setNombre(txtNombre);
-		c.setTelefono(txtTelefono);
-		c.setNacionalidad((Nacionalidad)appContext.getBean("nacionalidad"));
-		c.getNacionalidad().setId(cbNacionalidad);
-		if(cbNacionalidad==null)
-			System.out.println("nac es null");
-		else
-			System.out.println(cbNacionalidad.toString() + " clase: "+cbNacionalidad.getClass().toString());
-			
-		
-		vista.addObject("cliente", c);
-		((ConfigurableApplicationContext)(appContext)).close();
-		
-		vista.setViewName("cliente");
-		return vista;
-	}
-	*/
 	
 }

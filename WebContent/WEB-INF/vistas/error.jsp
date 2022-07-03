@@ -21,6 +21,9 @@
 			<b>Stack trace:</b> ${error.getStackTrace()}
 		</div>
 		<div>
+			<b>Localized Message:</b> ${e.getLocalizedMessage()}
+		</div>
+		<div>
 			<a href="index.html">Index</a>
 		</div>
 	</div>

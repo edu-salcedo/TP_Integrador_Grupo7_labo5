@@ -22,7 +22,7 @@ public class DaoBiblioteca implements IABML<Biblioteca>{
 		cHibernate = new ConfigHibernate();
 		session = cHibernate.abrirConexion();
 		session.beginTransaction();	
-		obj.setFechaAlta(Util.FormatDate(obj.getFechaAlta()));
+		obj.setFechaAlta(obj.getFechaAlta());
 		session.save(obj);		
 		session.getTransaction().commit();
 		cHibernate.cerrarSession();

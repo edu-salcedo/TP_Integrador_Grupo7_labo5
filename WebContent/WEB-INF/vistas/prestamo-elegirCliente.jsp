@@ -37,9 +37,9 @@
 					<li><a href="clientes.html" class="nav-link"><i
 							class="fa-solid fa-user-large"></i> Clientes</a></li>
 					<li><a href="prestamo.html" class="nav-link"><i
-							class="fa-solid fa-hand-holding-dollar"></i> Préstamos</a></li>
+							class="fa-solid fa-hand-holding-dollar"></i> Prï¿½stamos</a></li>
 					<li><a href="index.html" class="nav-link"><i
-							class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a></li>
+							class="fa-solid fa-right-from-bracket"></i> Cerrar Sesiï¿½n</a></li>
 				</ul>
 			</div>
 		</div>
@@ -75,59 +75,46 @@
 						<c:forEach items="${listaClientes}" var="item">
 							<tr>
 								<td>${item.getNombre()}</td>
-								<td>${item.getApellido()}</td>
-								<td>${item.getNacionalidad().getDescripcion()}</td>
-								<td>${item.getEmail()}</td>
-
-								<td><a
-									href="<c:url value='prestamoSeleccionarCliente-${item.id}-${biblioteca.getId()}.html' />">Seleccionar</a></td>
-								<!-- <td> <a href="<c:url value='PrestamoSeleccionarCliente-${item.id}.html' />">Seleccionar</a></td> -->
-								<!--
-								<td>
-									<a href="
-									<c:url value='PrestamoSeleccionarCliente.html'>
-										<c:param name="idCliente" value="${item.id}" />
-										<c:param name="idBiblioteca" value="${biblioteca.getId()}" />
-									</c:url>">Seleccionar</a>
-								</td>
-								-->
+								<td> ${item.getApellido()}</td>
+								<td> ${item.getNacionalidad().getDescripcion()}</td>
+								<td> ${item.getEmail()}</td>
+								
+								<td> <a href="<c:url value='prestamoSeleccionarCliente-${item.id}-${biblioteca.getId()}.html' />">Seleccionar</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 				<h3>Prestamo</h3>
-				<form method=get action="realizarPrestamo.html">
-
-					<div class="px-5 py-2 box-prestamo">
-						<h5>Libro</h5>
-						<div class="d-flex justify-content-start my-3">
-							<label>ID:</label> <input type="text" class="border rounded-3"
-								name="txtIdBiblioteca" value="${biblioteca.getId()}" readonly>
-							<label>Titulo: </label> <input type="text"
-								class="border rounded-3" name="txtTitulo"
-								value="${biblioteca.getLibro().getTitulo()}" readonly> <label>Autor:
-							</label> <input type="text" class="border rounded-3 " name="txtAutor"
-								value="${biblioteca.getLibro().getAutor().getNombre()} ${biblioteca.getLibro().getAutor().getApellido()}"
-								readonly>
-						</div>
-						<h5>Cliente</h5>
-						<div class="d-flex justify-content-start">
-							<label>ID:</label> <input type="text" class="border rounded-3"
-								name="txtClienteId" value="${clienteElegido.getId()}" readonly>
-							<label>Nombre: </label> <input type="text"
-								class="border rounded-3" name="txtCliente"
-								value="${clienteElegido.getNombre()} ${clienteElegido.getApellido()}"
-								readonly> <label>Telefono: </label> <input type="text"
-								class="border rounded-3" name="txtTelefono"
-								value="${clienteElegido.getTelefono()}" readonly>
-						</div>
-						<div class="d-flex justify-content-start my-3">
-							<label>Cantidad dias</label> <input type="text"
-								class="border rounded-3 mx-3" name="txtCantidadDias">
-						</div>
-						<div>
-							<input type="submit" class="btn btn-primary " value="Finalizar">
-						</div>
+				<form method=get action="realizarPrestamo.html" onsubmit="return validarCantidad();">
+					<div>
+						<label>Libro</label><br>
+						<label>ID: </label>
+						<input type="text" name="txtIdBiblioteca" value="${biblioteca.getId()}" readonly>
+						<label>Titulo: </label>
+						<input type="text" name="txtTitulo" value="${biblioteca.getLibro().getTitulo()}" readonly>
+						<label>Autor: </label>
+						<input type="text" name="txtAutor" value="${biblioteca.getLibro().getAutor().getNombre()} ${biblioteca.getLibro().getAutor().getApellido()}" readonly>
+					</div>
+					<div>
+						<label>Cliente</label>
+						<input type="text" name="txtClienteId" value="${clienteElegido.getId()}" readonly>
+						<input type="text" name="txtCliente" value="${clienteElegido.getNombre()} ${clienteElegido.getApellido()}" readonly>
+						<input type="text" name="txtTelefono" value="${clienteElegido.getTelefono()}" readonly>
+					</div>
+					<div>
+						<label>Cantidad de dias</label>
+						<select name="cbCantidadDias">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+						</select>
+					</div>
+					<div>
+						<input type="submit" value="Finalizar">
 					</div>
 				</form>
 			</div>
@@ -142,4 +129,5 @@
 	
 	
 </body>
+
 </html>

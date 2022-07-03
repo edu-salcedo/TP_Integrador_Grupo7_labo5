@@ -2,12 +2,17 @@ package app.servicio;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 import app.dao.DaoLibro;
 import app.entidades.Libro;
 import app.interfaces.IABML;
 
 public class ServicioLibro implements IABML<Libro>{
-	private DaoLibro dao = new DaoLibro();
+	@Autowired
+	@Qualifier("daoLibro")
+	private DaoLibro dao;
 	
 	@Override
 	public void create(Libro obj) {

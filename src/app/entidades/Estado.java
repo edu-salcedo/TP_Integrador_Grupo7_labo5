@@ -54,15 +54,5 @@ public class Estado implements Serializable{
 	public String toString() {
 		return "Estado [id=" + id + ", descripcion=" + descripcion + "]";
 	}
-	public static void Create(Estado estado) {
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
-		
-		ServicioEstado se=(ServicioEstado)appContext.getBean("servicioEstado");
-		se.create(estado);
-		
-		((ConfigurableApplicationContext)(appContext)).close();
-	}
-	
-	
 	
 }

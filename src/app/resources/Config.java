@@ -357,7 +357,7 @@ public class Config {
 		l.setAutor(autorBramStoker());
 		l.setCantidadPaginas(700);
 		l.setDescripcion("Libro de Terror");
-		l.setFechaLanzamiento(new Date(1822,6,5));
+		l.setFechaLanzamiento(Util.FormatDate(new Date(1822,6,5)));
 		l.setIdioma("ingles");
 		l.setIsbn(11111);
 		l.setTitulo("Dracula");
@@ -370,7 +370,7 @@ public class Config {
 		l.setAutor(autorJoseHernandez());
 		l.setCantidadPaginas(300);
 		l.setDescripcion("Libro de poesia clasico");
-		l.setFechaLanzamiento(new Date(1872,4,8));
+		l.setFechaLanzamiento(Util.FormatDate(new Date(1872,4,8)));
 		l.setIdioma("español");
 		l.setIsbn(22222);
 		l.setTitulo("El Martin Fierro");
@@ -383,7 +383,7 @@ public class Config {
 		l.setAutor(autorNagaruTanigawa());
 		l.setCantidadPaginas(200);
 		l.setDescripcion("novela ligera");
-		l.setFechaLanzamiento(new Date(2002,8,1));
+		l.setFechaLanzamiento(Util.FormatDate(new Date(2002,8,1)));
 		l.setIdioma("japones");
 		l.setIsbn(33333);
 		l.setTitulo("La melancolia de haruhi");
@@ -396,7 +396,7 @@ public class Config {
 		l.setAutor(autorConanDoyle());
 		l.setCantidadPaginas(300);
 		l.setDescripcion("novela policial de misterio");
-		l.setFechaLanzamiento(new Date(1902,10,4));
+		l.setFechaLanzamiento(Util.FormatDate(new Date(1902,10,4)));
 		l.setIdioma("ingles");
 		l.setIsbn(44444);
 		l.setTitulo("Sherlock Holmes");
@@ -409,7 +409,7 @@ public class Config {
 		l.setAutor(autorDanteAlighieri());
 		l.setCantidadPaginas(600);
 		l.setDescripcion("novela clasica que no tiene nada de comico");
-		l.setFechaLanzamiento(new Date(1842,11,11));
+		l.setFechaLanzamiento(Util.FormatDate(new Date(1842,11,11)));
 		l.setIdioma("ingles");
 		l.setIsbn(55555);
 		l.setTitulo("La Divina Comedia");
@@ -422,7 +422,7 @@ public class Config {
 		l.setAutor(autorStephenHawking());
 		l.setCantidadPaginas(250);
 		l.setDescripcion("Libro de ciencia sobre agujeros negros");
-		l.setFechaLanzamiento(new Date(2012,10,12));
+		l.setFechaLanzamiento(Util.FormatDate(new Date(2012,10,12)));
 		l.setIdioma("español");
 		l.setIsbn(66666);
 		l.setTitulo("Agujeros Negros");
@@ -435,7 +435,7 @@ public class Config {
 		l.setAutor(autorRobertStevenson());
 		l.setCantidadPaginas(290);
 		l.setDescripcion("novela de aventura con piratas y tesoros");
-		l.setFechaLanzamiento(new Date(1912,10,19));
+		l.setFechaLanzamiento(Util.FormatDate(new Date(1912,10,19)));
 		l.setIdioma("español");
 		l.setIsbn(77777);
 		l.setTitulo("La isla del tesoro");
@@ -448,7 +448,7 @@ public class Config {
 		l.setAutor(autorDanielLopezRosetti());
 		l.setCantidadPaginas(270);
 		l.setDescripcion("Libro sobre psicologia, historia y biologia de la mujer");
-		l.setFechaLanzamiento(new Date(2012,9,22));
+		l.setFechaLanzamiento(Util.FormatDate(new Date(2012,9,22)));
 		l.setIdioma("español");
 		l.setIsbn(88888);
 		l.setTitulo("Ellas");
@@ -461,7 +461,7 @@ public class Config {
 		l.setAutor(autorRayBradbury());
 		l.setCantidadPaginas(180);
 		l.setDescripcion("Libro de misterio clasico donde aprendemos a que temperatura se prende fuego el papel");
-		l.setFechaLanzamiento(new Date(2000,8,20));
+		l.setFechaLanzamiento(Util.FormatDate(new Date(2000,8,20)));
 		l.setIdioma("ingles");
 		l.setIsbn(99999);
 		l.setTitulo("Fahrenheit 451");
@@ -474,7 +474,7 @@ public class Config {
 		l.setAutor(autorGeorgeOrwell());
 		l.setCantidadPaginas(348);
 		l.setDescripcion("Libro de misterio clasico donde todos nos observan, a toda hora, en todo momento");
-		l.setFechaLanzamiento(new Date(1970,1,7));
+		l.setFechaLanzamiento(Util.FormatDate(new Date(1970,1,7)));
 		l.setIdioma("ingles");
 		l.setIsbn(1010);
 		l.setTitulo("1984");
@@ -487,7 +487,7 @@ public class Config {
 		l.setAutor(autorSigmundFreud());
 		l.setCantidadPaginas(302);
 		l.setDescripcion("Libro tecnico de psicologia para estudiantes universitarios");
-		l.setFechaLanzamiento(new Date(1944,4,14));
+		l.setFechaLanzamiento(Util.FormatDate(new Date(1944,4,14)));
 		l.setIdioma("español");
 		l.setIsbn(1111);
 		l.setTitulo("El malestar de la cultura");
@@ -500,7 +500,7 @@ public class Config {
 		l.setAutor(autorSigmundFreud());
 		l.setCantidadPaginas(233);
 		l.setDescripcion("Libro tecnico de psicologia para estudiantes universitarios");
-		l.setFechaLanzamiento(new Date(1955,5,19));
+		l.setFechaLanzamiento(Util.FormatDate(new Date(1955,5,19)));
 		l.setIdioma("español");
 		l.setIsbn(1212);
 		l.setTitulo("Psicologia de las Masas");
@@ -533,51 +533,51 @@ public class Config {
 	}
 	@Bean
 	public Biblioteca bibliotecaDracula() {
-		return new Biblioteca(libroDracula(),new Date(2022,6,23),estadoEnBiblioteca());
+		return new Biblioteca(libroDracula(),Util.FormatDate(new Date(2022,6,23)),estadoEnBiblioteca());
 	}
 	@Bean
 	public Biblioteca bibliotecaMartinFierro() {
-		return new Biblioteca(libroMartinFierro(),new Date(2022,6,23),estadoPrestado());
+		return new Biblioteca(libroMartinFierro(),Util.FormatDate(new Date(2022,6,23)),estadoPrestado());
 	}
 	@Bean
 	public Biblioteca bibliotecaHaruhi() {
-		return new Biblioteca(libroHaruhi(),new Date(2022,6,23),estadoEnBiblioteca());
+		return new Biblioteca(libroHaruhi(),Util.FormatDate(new Date(2022,6,23)),estadoEnBiblioteca());
 	}
 	@Bean
 	public Biblioteca bibliotecaSherlockHolmes() {
-		return new Biblioteca(libroSherlockHolmes(),new Date(2022,6,23),estadoPrestado());
+		return new Biblioteca(libroSherlockHolmes(),Util.FormatDate(new Date(2022,6,23)),estadoPrestado());
 	}
 	@Bean
 	public Biblioteca bibliotecaLaDivinaComedia() {
-		return new Biblioteca(libroLaDivinaComedia(),new Date(2022,6,23),estadoPrestado());
+		return new Biblioteca(libroLaDivinaComedia(),Util.FormatDate(new Date(2022,6,23)),estadoPrestado());
 	}
 	@Bean
 	public Biblioteca bibliotecaAgujerosNegros() {
-		return new Biblioteca(libroAgujerosNegros(),new Date(2022,6,23),estadoEnBiblioteca());
+		return new Biblioteca(libroAgujerosNegros(),Util.FormatDate(new Date(2022,6,23)),estadoEnBiblioteca());
 	}
 	@Bean
 	public Biblioteca bibliotecaLaIslaDelTesoro() {
-		return new Biblioteca(libroLaIslaDelTesoro(),new Date(2022,6,23),estadoEnBiblioteca());
+		return new Biblioteca(libroLaIslaDelTesoro(),Util.FormatDate(new Date(2022,6,23)),estadoEnBiblioteca());
 	}
 	@Bean
 	public Biblioteca bibliotecaEllas() {
-		return new Biblioteca(libroEllas(),new Date(2022,6,23),estadoPrestado());
+		return new Biblioteca(libroEllas(),Util.FormatDate(new Date(2022,6,23)),estadoPrestado());
 	}
 	@Bean
 	public Biblioteca bibliotecaFahrenheit451() {
-		return new Biblioteca(libroFahrenheit451(),new Date(2022,6,23),estadoEnBiblioteca());
+		return new Biblioteca(libroFahrenheit451(),Util.FormatDate(new Date(2022,6,23)),estadoEnBiblioteca());
 	}
 	@Bean
 	public Biblioteca biblioteca1984() {
-		return new Biblioteca(libro1984(),new Date(2022,6,23),estadoPrestado());
+		return new Biblioteca(libro1984(),Util.FormatDate(new Date(2022,6,23)),estadoPrestado());
 	}
 	@Bean
 	public Biblioteca bibliotecaElMalestaDeLaCultura() {
-		return new Biblioteca(libroElMalestaDeLaCultura(),new Date(2022,6,23),estadoEnBiblioteca());
+		return new Biblioteca(libroElMalestaDeLaCultura(),Util.FormatDate(new Date(2022,6,23)),estadoEnBiblioteca());
 	}
 	@Bean
 	public Biblioteca bibliotecalibroPsicologiaDeLasMasas() {
-		return new Biblioteca(libroPsicologiaDeLasMasas(),new Date(2022,6,23),estadoPrestado());
+		return new Biblioteca(libroPsicologiaDeLasMasas(),Util.FormatDate(new Date(2022,6,23)),estadoPrestado());
 	}
 	
 	@Bean
@@ -588,7 +588,7 @@ public class Config {
 		c.setDireccion("Calle falsa 123");
 		c.setDni("30222333");
 		c.setEmail("cosme@hotmail.com");
-		c.setNacimiento(new Date(1988,12,19));
+		c.setNacimiento(Util.FormatDate(new Date(1988,12,19)));
 		c.setNacionalidad(nacionalidadArgentino());
 		c.setTelefono("1511112222");
 		c.setLocalidad("Tigre");
@@ -602,7 +602,7 @@ public class Config {
 		c.setDireccion("berlin 123");
 		c.setDni("30111222");
 		c.setEmail("landa@gmail.com");
-		c.setNacimiento(new Date(1981,5,5));
+		c.setNacimiento(Util.FormatDate(new Date(1981,5,5)));
 		c.setNacionalidad(nacionalidadAleman());
 		c.setTelefono("1531133223");
 		c.setLocalidad("frankfurt");
@@ -616,7 +616,7 @@ public class Config {
 		c.setDireccion("Madrid 912");
 		c.setDni("30333333");
 		c.setEmail("pity@hotmail.com");
-		c.setNacimiento(new Date(1993,12,9));
+		c.setNacimiento(Util.FormatDate(new Date(1993,12,9)));
 		c.setNacionalidad(nacionalidadArgentino());
 		c.setTelefono("1533114222");
 		c.setLocalidad("Parque Patricios");

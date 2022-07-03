@@ -97,13 +97,4 @@ public class Prestamo implements Serializable{
 		this.cliente = cliente;
 	}
 
-	public static void Create(Prestamo prestamo) {
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
-		
-		ServicioPrestamo sp=(ServicioPrestamo)appContext.getBean("servicioPrestamo");
-		sp.create(prestamo);
-		
-		((ConfigurableApplicationContext)(appContext)).close();
-		
-	}
 }

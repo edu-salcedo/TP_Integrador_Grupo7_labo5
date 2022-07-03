@@ -29,7 +29,7 @@
 								class="m-auto form-control w-75" name="txtUsuario">
 						</div>
 						<div>
-							<label>Contraseña</label> <input type="password"
+							<label>Contraseï¿½a</label> <input type="password"
 								class="m-auto form-control w-75" name="txtPassword">
 						</div>
 						<div>
@@ -48,6 +48,14 @@
 
 			</c:otherwise>
 		</c:choose>
+		
+		<div>
+			<a href="clientes.html">clientes</a>
+			<a href="cliente.html">cliente</a>
+			<a href="biblioteca.html">biblioteca</a>
+			<a href="prestamo.html">prestamo</a>
+		</div>
+		
 	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"

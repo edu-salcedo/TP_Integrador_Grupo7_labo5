@@ -55,7 +55,6 @@ public class PaginaController {
 	@RequestMapping("iniciar_app.html")
 	public ModelAndView iniciarApp() {
 		inicializarApp();
-		vista = new ModelAndView();
 		vista.setViewName("index");
 		return vista;
 	}

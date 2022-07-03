@@ -64,31 +64,4 @@ public class Nacionalidad implements Serializable{
 		return "-Nacionalidad: id nacionalidad=" + id + ", nacionalidad=" + descripcion + "- ";
 	}
 	
-	public static void Create(Nacionalidad n) {
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
-		
-		ServicioNacionalidad sn= (ServicioNacionalidad)appContext.getBean("servicioNacionalidad");
-		sn.create(n);
-		
-		((ConfigurableApplicationContext)(appContext)).close();
-	}
-	
-	public static Nacionalidad readOne(int id) {
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
-		
-		ServicioNacionalidad sn= (ServicioNacionalidad)appContext.getBean("servicioNacionalidad");
-		Nacionalidad n= sn.readOne(id);
-		((ConfigurableApplicationContext)(appContext)).close();
-		
-		return n;
-	}
-	public static List <Nacionalidad> readAll() {
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
-		
-		ServicioNacionalidad sn= (ServicioNacionalidad)appContext.getBean("servicioNacionalidad");
-		List<Nacionalidad> lista= sn.readAll();
-		((ConfigurableApplicationContext)(appContext)).close();
-		
-		return lista;
-	}
 }

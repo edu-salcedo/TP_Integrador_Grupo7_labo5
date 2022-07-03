@@ -107,28 +107,4 @@ public class Autor implements Serializable{
 		return "Autor: id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", " + nacionalidad.toString()
 				+ ", email=" + email;
 	}
-	
-	public static void Create(Autor a) {
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
-		
-		ServicioAutor sn= (ServicioAutor)appContext.getBean("servicioAutor");
-		sn.create(a);
-		
-		((ConfigurableApplicationContext)(appContext)).close();
-	}
-	public static void Delete(Autor a) {
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
-		
-		ServicioAutor sn= (ServicioAutor)appContext.getBean("servicioAutor");
-		sn.delete(a);
-		
-		((ConfigurableApplicationContext)(appContext)).close();
-	}
-	public static List<Autor> readAll(){
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
-		ServicioAutor sn= (ServicioAutor)appContext.getBean("servicioAutor");
-		List<Autor>lista =sn.readAll();
-		((ConfigurableApplicationContext)(appContext)).close();
-		return lista;
-	}
 }

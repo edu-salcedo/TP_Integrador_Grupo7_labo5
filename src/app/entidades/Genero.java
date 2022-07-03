@@ -66,12 +66,4 @@ public class Genero implements Serializable{
 		return "Id de género: " + id + ", Descripción: " + descripcion + ".";
 	}
 	
-	public static void Create(Genero g) {
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
-		
-		ServicioGenero sg= (ServicioGenero)appContext.getBean("servicioGenero");
-		sg.create(g);
-		
-		((ConfigurableApplicationContext)(appContext)).close();
-	}
 }

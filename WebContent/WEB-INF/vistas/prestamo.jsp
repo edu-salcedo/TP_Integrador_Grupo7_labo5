@@ -37,9 +37,9 @@
 					<li><a href="clientes.html" class="nav-link"><i
 							class="fa-solid fa-user-large"></i> Clientes</a></li>
 					<li><a href="prestamo.html" class="nav-link"><i
-							class="fa-solid fa-hand-holding-dollar"></i> Préstamos</a></li>
+							class="fa-solid fa-hand-holding-dollar"></i> Prï¿½stamos</a></li>
 					<li><a href="index.html" class="nav-link"><i
-							class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a></li>
+							class="fa-solid fa-right-from-bracket"></i> Cerrar Sesiï¿½n</a></li>
 				</ul>
 			</div>
 		</div>
