@@ -14,7 +14,7 @@
 	rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
 	 crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"/>
-  	<link rel="stylesheet" href="./resources/css/cliente.css">
+  	<link rel="stylesheet" href="./resources/css/StyleMenu.css">
 </head>
 <body>
 	<div class="upbar d-flex">
@@ -110,15 +110,16 @@
 								<c:otherwise>
 									<div  class="col d-flex">
 										<label class="w-100">DNI</label> 
-										<input type="text" class="form-control" name="txtDni">
+										<input type="text" pattern="[0-9]{7,8}" maxlength="8" name="txtDni" class="form-control" required>
+		           		                <div class="valid-feedback"></div>
 									</div>
 									<div  class="col d-flex my-2">
 										<label class="w-100">Nombre</label> 
-										<input type="text" class="form-control" name="txtNombre">
+										<input type="text" name="txtNombre" class="form-control" required>
 									</div>
 									<div  class="col d-flex">
 										<label class="w-100">Apellido</label>
-										 <input type="text" class="form-control" name="txtApellido">
+										 <input type="text" name="txtApellido" class="form-control" required>
 									</div>
 									<div  class="col d-flex my-2">
 										<label class="w-75">Nacionalidad</label>
@@ -130,7 +131,7 @@
 									</div>
 									<div  class="col d-flex">
 										<label class="w-100">Fecha Nacimiento</label>
-										 <input type="date"class="form-control" name="txtNacimiento">
+										 <input name="txtNacimiento" type="text" class="form-control" required>
 									</div>
 									<div  class="col d-flex my-2">
 										<label class="w-100">Direccion</label> 
@@ -138,15 +139,15 @@
 									</div>
 									<div  class="col d-flex">
 										<label class="w-100">Localidad</label> 
-										<input type="text" class="form-control" name="txtLocalidad">
+										<input type="text" class="form-control" name="txtLocalidad" required>
 									</div>
 									<div  class="col d-flex my-2">
 										<label class="w-100">Email</label>
-										 <input type="text" class="form-control" name="txtEmail">
+										 <input type="text" class="form-control" name="txtEmail" required>
 									</div>
 									<div  class="col d-flex">
 										<label class="w-100">Telefono</label> 
-										<input type="text" class="form-control" name="txtTelefono">
+										<input type="text" class="form-control" pattern="[0-9]{7,8}" name="txtTelefono" required>
 									</div>
 								</c:otherwise>
 							</c:choose>
@@ -159,7 +160,6 @@
 			</div>
 		</div>
 	</div>
-
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"

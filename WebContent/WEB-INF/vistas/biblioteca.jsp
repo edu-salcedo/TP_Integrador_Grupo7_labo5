@@ -14,7 +14,7 @@
 	rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
 	 crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"/>
-  	  <link rel="stylesheet" href="./resources/css/cliente.css">
+  	  <link rel="stylesheet" href="./resources/css/StyleMenu.css">
 </head>
 <body>
 
