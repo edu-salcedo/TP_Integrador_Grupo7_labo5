@@ -96,7 +96,7 @@ public class ClienteController {
 			String txtDni,String txtNombre, String txtApellido,
 			Integer cbNacionalidad,String txtNacimiento,
 			String txtDireccion,String txtLocalidad,String txtEmail,
-			String txtTelefono, Integer txtIdCliente, String hiddenAccion) {
+			String txtTelefono, Integer txtIdCliente) {
 		try 
 		{
 			cliente.setApellido(txtApellido);
@@ -108,8 +108,7 @@ public class ClienteController {
 			cliente.setTelefono(txtTelefono);
 			cliente.setLocalidad(txtLocalidad);
 			cliente.getNacionalidad().setId(cbNacionalidad);
-			System.out.println(hiddenAccion);
-			if(hiddenAccion.compareTo("modificar")==0) {
+			if(txtIdCliente!=null) {
 				cliente.setId(txtIdCliente);
 				servicioCliente.update(cliente);
 			}

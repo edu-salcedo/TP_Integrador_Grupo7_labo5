@@ -42,21 +42,28 @@ public class PrestamoElegirCliente {
 	@RequestMapping("prestamo-elegirCliente{ssoId}.html") //IR A PRESTAMO
 	public ModelAndView vistaPrestamoElegirCliente(@PathVariable Integer ssoId, String txtBuscar) {
 		
-		List<Cliente>listaClientes;
-		Biblioteca biblioteca=Biblioteca.ReadOne(ssoId);
-		if(biblioteca==null) 
-			System.out.println("No encontro Biblioteca");
-		else
-			System.out.println(biblioteca.toString());
-		
-		if(txtBuscar!=null) {
-			listaClientes=Cliente.readMany(txtBuscar);
+		try 
+		{
+			Biblioteca biblioteca=servicioBiblioteca.readOne(ssoId);
+			if(biblioteca!=null) 
+				vista.addObject("biblioteca", biblioteca);
+			
+			List<Cliente>listaClientes;
+			if(txtBuscar!=null)
+				listaClientes=servicioCliente.readMany(txtBuscar);
+			else
+				listaClientes=servicioCliente.readAll();
+			
+			if(listaClientes!=null)
+				vista.addObject("listaClientes", listaClientes);
+			vista.addObject("listaClientes", listaClientes);
+			vista.setViewName("prestamo-elegirCliente");
+		} 
+		catch (Exception e) 
+		{
+			vista.addObject("error",e);
+			vista.setViewName("error");
 		}
-		else {
-			listaClientes=new ArrayList<Cliente>();
-		}
-		vista.addObject("biblioteca", biblioteca);
-		vista.addObject("listaClientes", listaClientes);
 		
 		return vista;
 	}
@@ -121,11 +128,8 @@ public class PrestamoElegirCliente {
 			biblioteca.getEstado().setId(1);
 			servicioBiblioteca.update(biblioteca);
 			
-			System.out.println("getFecha = "+ prestamo.getFechaPrestamo().toString());
-			System.out.println("getFecha + FormatDate= "+Util.FormatDate(prestamo.getFechaPrestamo()));
-			
-			
 			((ConfigurableApplicationContext)(appContext)).close();
+			
 			List<Biblioteca>listaBiblioteca = servicioBiblioteca.readAll();
 			vista.addObject("listaBiblioteca", listaBiblioteca);
 			vista.addObject("clienteElegido",cliente);
