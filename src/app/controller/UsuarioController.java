@@ -12,7 +12,7 @@ import app.entidades.Usuario;
 import app.servicio.ServicioUsuario;
 
 @Controller
-@SessionAttributes({"usuarioLogeado"})
+@SessionAttributes("usuarioLogeado")
 public class UsuarioController {
 	@Autowired
 	@Qualifier("modelAndView")
@@ -29,11 +29,12 @@ public class UsuarioController {
 			if(u!=null) { 
 				vista.addObject("usuarioLogeado", u.getNombre());
 				vista.addObject("mensaje", "usuario logueado!");
+				vista.setViewName("home");
 			}
 			else {
-				vista.addObject("usuarioLogeado", "");
+				vista.addObject("mensaje", "usuario logueado!");
+				vista.setViewName("index");
 			}
-			vista.setViewName("home");
 		} 
 		catch (Exception e) 
 		{
@@ -49,6 +50,4 @@ public class UsuarioController {
 		vista.addObject("usuarioLogeado", "");
 		return vista;
 	}
-	
-	
 }

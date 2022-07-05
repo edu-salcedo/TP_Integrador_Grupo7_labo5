@@ -31,13 +31,11 @@
 							class="fa-solid fa-house-chimney"></i> Home</a></li>
 					<li><a href="biblioteca.html" class="nav-link"><i
 							class="bi bi-collection-fill"></i> Biblioteca</a></li>
-					<li><a href="libro.html" class="nav-link"><i
-							class="fa-solid fa-book"></i> Libros</a></li>
 					<li><a href="clientes.html" class="nav-link"><i
 							class="fa-solid fa-user-large"></i> Clientes</a></li>
 					<li><a href="prestamo.html" class="nav-link"><i
 							class="fa-solid fa-hand-holding-dollar"></i> Préstamos</a></li>
-					<li><a href="index.html" class="nav-link"><i
+					<li><a href="logout.html" class="nav-link"><i
 							class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a></li>
 				</ul>
 			</div>

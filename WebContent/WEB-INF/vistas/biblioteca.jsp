@@ -37,9 +37,6 @@
                                                            
             </li>
             <li>
-              <a href="libro.html" class="nav-link"><i class="fa-solid fa-book"></i> Libros</a>
-            </li>
-            <li>
               <a href="clientes.html" class="nav-link"><i class="fa-solid fa-user-large"></i> Clientes</a>
             </li>
             <li>
