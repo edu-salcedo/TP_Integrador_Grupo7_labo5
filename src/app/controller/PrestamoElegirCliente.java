@@ -1,7 +1,6 @@
 package app.controller;
 
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +48,7 @@ public class PrestamoElegirCliente {
 				vista.addObject("biblioteca", biblioteca);
 			
 			List<Cliente>listaClientes;
+			
 			if(txtBuscar!=null)
 				listaClientes=servicioCliente.readMany(txtBuscar);
 			else
@@ -56,7 +56,6 @@ public class PrestamoElegirCliente {
 			
 			if(listaClientes!=null)
 				vista.addObject("listaClientes", listaClientes);
-			vista.addObject("listaClientes", listaClientes);
 			vista.setViewName("prestamo-elegirCliente");
 		} 
 		catch (Exception e) 
