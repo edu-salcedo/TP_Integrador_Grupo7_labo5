@@ -131,7 +131,7 @@
 									</div>
 									<div  class="col d-flex">
 										<label class="w-100">Fecha Nacimiento</label>
-										 <input name="txtNacimiento" type="text" class="form-control" required>
+										 <input name="txtNacimiento" type="date" class="form-control" required>
 									</div>
 									<div  class="col d-flex my-2">
 										<label class="w-100">Direccion</label> 
@@ -147,7 +147,7 @@
 									</div>
 									<div  class="col d-flex">
 										<label class="w-100">Telefono</label> 
-										<input type="text" class="form-control" pattern="[0-9]{7,8}" name="txtTelefono" required>
+										<input type="text" class="form-control" pattern="[0-9]{8,10}" name="txtTelefono" required>
 									</div>
 								</c:otherwise>
 							</c:choose>
