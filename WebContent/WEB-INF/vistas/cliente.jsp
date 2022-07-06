@@ -35,7 +35,7 @@
 							class="fa-solid fa-user-large"></i> Clientes</a></li>
 					<li><a href="prestamo.html" class="nav-link"><i
 							class="fa-solid fa-hand-holding-dollar"></i> Prï¿½stamos</a></li>
-					<li><a href="index.html" class="nav-link"><i
+					<li><a onclick="return confirm('¿Desea cerrar sesion?')" href="logout.html" class="nav-link"><i
 							class="fa-solid fa-right-from-bracket"></i> Cerrar Sesiï¿½n</a></li>
 				</ul>
 			</div>
@@ -150,7 +150,8 @@
 								</c:otherwise>
 							</c:choose>
 							<div>
-								<input type="submit" class="mt-3 btn btn-primary " value="Aceptar" name="btnAceptar">
+								<input type="submit" class="mt-3 btn btn-primary " value="Aceptar" name="btnAceptar" onclick="return confirm('¿Desea guardar estos datos?')">
+								<a href="clientes.html" >Volver</a>
 							</div>
 						</form>
 					</div>

@@ -28,11 +28,10 @@ public class UsuarioController {
 			Usuario u= servicioUsuario.login(txtUsuario,txtPassword);
 			if(u!=null) { 
 				vista.addObject("usuarioLogeado", u.getNombre());
-				vista.addObject("mensaje", "usuario logueado!");
 				vista.setViewName("home");
 			}
 			else {
-				vista.addObject("mensaje", "usuario logueado!");
+				vista.addObject("mensaje", "Usuario o contraseña incorrectos");
 				vista.setViewName("index");
 			}
 		} 

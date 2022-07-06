@@ -43,7 +43,8 @@
               <a href="prestamo.html" class="nav-link"><i class="fa-solid fa-hand-holding-dollar"></i> Prï¿½stamos</a>
             </li>
             <li>
-              <a href="index.html" class="nav-link"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesiï¿½n</a>
+              <a onclick="return confirm('¿Desea cerrar sesion?')" 
+              href="logout.html" class="nav-link"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesiï¿½n</a>
             </li>
           </ul>
         </div>
@@ -83,7 +84,10 @@
 						<td> ${item.getLibro().getTitulo()}</td>
 						<td> ${item.getFechaAlta()}</td>
 						<td> ${item.getEstado().getDescripcion()}</td>
-						<td> <a   class="btn btn-outline-danger" href="<c:url value='eliminarBiblioteca-${item.id}.html' />"><i class="bi bi-trash-fill"></i></a></td>
+						<td> 
+							<a onclick="return confirm('¿Desea eliminar este Libro?')" class="btn btn-outline-danger" 
+							href="<c:url value='eliminarBiblioteca-${item.id}.html' />"><i class="bi bi-trash-fill"></i></a>
+						</td>
 						
 					</tr>
 				</c:forEach>

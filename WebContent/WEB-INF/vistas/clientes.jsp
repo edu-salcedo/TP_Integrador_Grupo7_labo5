@@ -37,7 +37,7 @@
 							class="fa-solid fa-user-large"></i> Clientes</a></li>
 					<li><a href="prestamo.html" class="nav-link"><i
 							class="fa-solid fa-hand-holding-dollar"></i> Prï¿½stamos</a></li>
-					<li><a href="index.html" class="nav-link"><i
+					<li><a onclick="return confirm('¿Desea cerrar sesion?')" href="logout.html" class="nav-link"><i
 							class="fa-solid fa-right-from-bracket"></i> Cerrar Sesiï¿½n</a></li>
 				</ul>
 			</div>
@@ -59,7 +59,8 @@
 						<div class="buscar me-5 mt-2">
 							<input type="text" class=" border rounded-3" name="txtBuscar"
 								placeholder="Buscar" /> <a href=""><i class="bi bi-search "></i></a>
-							<input type="submit" value="Buscar">
+							<input type="submit" class="btn btn-primary" value="Buscar">
+							<a href="clientes.html" class="btn btn-primary">Todos</a>
 						</div>
 					</form>
 
@@ -85,7 +86,7 @@
 										class="bi bi-eye"></i></a> <a
 									href="<c:url value='modificarCliente-${item.id}.html' />"
 									class="btn btn-outline-success"><i class="bi bi-pencil"></i></a>
-									<a href="<c:url value='eliminarCliente-${item.id}.html' />"
+									<a onclick="return confirm('¿Desea eliminar este usuario?')" href="<c:url value='eliminarCliente-${item.id}.html' />"
 									class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></a>
 								</td>
 							</tr>
@@ -95,10 +96,17 @@
 			</div>
 		</div>
 	</div>
-
+	
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
 		crossorigin="anonymous"></script>
 </body>
+
+<script>
+	function confirmar() {
+	  confirm("¿Desea eliminar este usuario?");
+	}
+</script>
+
 </html>

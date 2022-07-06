@@ -33,7 +33,7 @@
 								class="m-auto form-control w-75" name="txtPassword">
 						</div>
 						<div>
-							<input type="submit" class="mt-3" value="Ingresar" name="btnIngresar">
+							<input type="submit" class="btn btn-primary" style="margin: 5%;" value="Ingresar" name="btnIngresar">
 						</div>
 						<h4 class="mb-3">${mensaje}</h4>
 					</form>
@@ -41,21 +41,12 @@
 			</c:when>
 			<c:otherwise>
 				<div>
-					<h4>${mensaje}</h4>
 					<h4>Usuario: ${usuarioLogeado}</h4>
 					<a href="logout.html">logout</a>
+					<a href="home.html">home</a>
 				</div>
-
 			</c:otherwise>
 		</c:choose>
-		
-		<div>
-			<a href="clientes.html">clientes</a>
-			<a href="cliente.html">cliente</a>
-			<a href="biblioteca.html">biblioteca</a>
-			<a href="prestamo.html">prestamo</a>
-		</div>
-		
 	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"

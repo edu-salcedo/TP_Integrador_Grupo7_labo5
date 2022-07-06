@@ -38,7 +38,7 @@
 							class="fa-solid fa-user-large"></i> Clientes</a></li>
 					<li><a href="prestamo.html" class="nav-link"><i
 							class="fa-solid fa-hand-holding-dollar"></i> Prï¿½stamos</a></li>
-					<li><a href="index.html" class="nav-link"><i
+					<li><a onclick="return confirm('¿Desea cerrar sesion?')" href="logout.html" class="nav-link"><i
 							class="fa-solid fa-right-from-bracket"></i> Cerrar Sesiï¿½n</a></li>
 				</ul>
 			</div>
@@ -58,6 +58,7 @@
 						<div>
 							<input type="hidden" name="txtIdBiblioteca"
 								value="${biblioteca.getId()}" readonly>
+								<a href="<c:url value='prestamo-elegirCliente${biblioteca.getId()}.html' />">Todos</a>
 						</div>
 					</div>
 				</form>
@@ -79,29 +80,36 @@
 								<td> ${item.getNacionalidad().getDescripcion()}</td>
 								<td> ${item.getEmail()}</td>
 								
-								<td> <a href="<c:url value='prestamoSeleccionarCliente-${item.id}-${biblioteca.getId()}.html' />">Seleccionar</a></td>
+								<td> <a class="btn btn-primary" href="<c:url value='prestamoSeleccionarCliente-${item.id}-${biblioteca.getId()}.html' />">Seleccionar</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 				<h3>Prestamo</h3>
 				<form method=get action="realizarPrestamo.html" onsubmit="return validarCantidad();">
-					<div>
-						<label>Libro</label><br>
-						<label>ID: </label>
-						<input type="text" name="txtIdBiblioteca" value="${biblioteca.getId()}" readonly>
-						<label>Titulo: </label>
-						<input type="text" name="txtTitulo" value="${biblioteca.getLibro().getTitulo()}" readonly>
-						<label>Autor: </label>
-						<input type="text" name="txtAutor" value="${biblioteca.getLibro().getAutor().getNombre()} ${biblioteca.getLibro().getAutor().getApellido()}" readonly>
+					<div class="row">
+						<div class="col">
+							<h5>Libro</h5>
+							<label>ID: </label>
+							<input type="text" name="txtIdBiblioteca" value="${biblioteca.getId()}" readonly><br>
+							<label>Titulo: </label>
+							<input type="text" name="txtTitulo" value="${biblioteca.getLibro().getTitulo()}" readonly><br>
+							<label>Autor: </label>
+							<input type="text" name="txtAutor" value="${biblioteca.getLibro().getAutor().getNombre()} ${biblioteca.getLibro().getAutor().getApellido()}" readonly>
+							<br>
+						</div>
+						<div class="col">
+							<h5>Cliente</h5>
+							<label>ID: </label>
+							<input type="text" name="txtClienteId" value="${clienteElegido.getId()}" readonly><br>
+							<label>Cliente: </label>
+							<input type="text" name="txtCliente" value="${clienteElegido.getNombre()} ${clienteElegido.getApellido()}" readonly><br>
+							<label>Tel: </label>
+							<input type="text" name="txtTelefono" value="${clienteElegido.getTelefono()}" readonly><br>
+						</div>
 					</div>
-					<div>
-						<label>Cliente</label>
-						<input type="text" name="txtClienteId" value="${clienteElegido.getId()}" readonly>
-						<input type="text" name="txtCliente" value="${clienteElegido.getNombre()} ${clienteElegido.getApellido()}" readonly>
-						<input type="text" name="txtTelefono" value="${clienteElegido.getTelefono()}" readonly>
-					</div>
-					<div>
+					
+					<div style="margin:1%;">
 						<label>Cantidad de dias</label>
 						<select name="cbCantidadDias">
 							<option value="1">1</option>
@@ -113,8 +121,12 @@
 							<option value="7">7</option>
 						</select>
 					</div>
-					<div>
-						<input type="submit" value="Finalizar">
+					<div style="margin:1%;">
+					
+						<c:if test="${clienteElegido!=null}">
+							 <input type="submit" class="btn btn-primary" onclick="return confirm('¿Desea confirmar este prestamo?')" value="Finalizar">
+						</c:if>
+						<a href="prestamo.html" class="btn btn-danger" >Volver</a>
 					</div>
 				</form>
 			</div>

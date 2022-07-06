@@ -36,7 +36,7 @@
 							class="fa-solid fa-user-large"></i> Clientes</a></li>
 					<li><a href="prestamo.html" class="nav-link"><i
 							class="fa-solid fa-hand-holding-dollar"></i> Prï¿½stamos</a></li>
-					<li><a href="index.html" class="nav-link"><i
+					<li><a onclick="return confirm('¿Desea cerrar sesion?')" href="logout.html" class="nav-link"><i
 							class="fa-solid fa-right-from-bracket"></i> Cerrar Sesiï¿½n</a></li>
 				</ul>
 			</div>
@@ -80,11 +80,11 @@
 								<td>${item.getEstado().getDescripcion()}</td>
 								<c:choose>
 									<c:when test="${item.getEstado().getId() == 2}">
-										<td><a
+										<td><a class="btn btn-primary"
 											href="<c:url value='prestamo-elegirCliente${item.id}.html' />">Prestar</a></td>
 									</c:when>
 									<c:otherwise>
-										<td><a
+										<td><a class="btn btn-success" onclick="return confirm('¿Desea devolver este libro?')"
 											href="<c:url value='cambiarEstadoBiblioteca-${item.id}.html' />">Devolver</a></td>
 									</c:otherwise>
 								</c:choose>
