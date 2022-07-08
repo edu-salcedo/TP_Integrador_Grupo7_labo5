@@ -8,7 +8,6 @@
 <title>Registrar prestamo</title>
 
  <script src="https://kit.fontawesome.com/067889c2a3.js" crossorigin="anonymous"></script>	
-	
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" 
 	rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
 	 crossorigin="anonymous">
@@ -91,28 +90,28 @@
 						<div class="col">
 							<h5>Libro</h5>
 							<label>ID: </label>
-							<input type="text" name="txtIdBiblioteca" value="${biblioteca.getId()}" readonly><br>
+							<input type="text" name="txtIdBiblioteca" class="form-control" value="${biblioteca.getId()}" readonly><br>
 							<label>Titulo: </label>
-							<input type="text" name="txtTitulo" value="${biblioteca.getLibro().getTitulo()}" readonly><br>
+							<input type="text" name="txtTitulo" class="form-control" value="${biblioteca.getLibro().getTitulo()}" readonly><br>
 							<label>Autor: </label>
-							<input type="text" name="txtAutor" value="${biblioteca.getLibro().getAutor().getNombre()} ${biblioteca.getLibro().getAutor().getApellido()}" readonly>
+							<input type="text" name="txtAutor" class="form-control" value="${biblioteca.getLibro().getAutor().getNombre()} ${biblioteca.getLibro().getAutor().getApellido()}" readonly>
 							<br>
 						</div>
 						<div class="col">
 							<h5>Cliente</h5>
 							<label>ID: </label>
-							<input type="text" name="txtClienteId" value="${clienteElegido.getId()}" readonly><br>
+							<input type="text" name="txtClienteId" class="form-control" value="${clienteElegido.getId()}" readonly required><br>
 							<label>Cliente: </label>
-							<input type="text" name="txtCliente" value="${clienteElegido.getNombre()} ${clienteElegido.getApellido()}" readonly><br>
+							<input type="text" name="txtCliente" class="form-control" value="${clienteElegido.getNombre()} ${clienteElegido.getApellido()}" readonly required><br>
 							<label>Tel: </label>
-							<input type="text" name="txtTelefono" value="${clienteElegido.getTelefono()}" readonly><br>
+							<input type="text" name="txtTelefono" class="form-control" value="${clienteElegido.getTelefono()}" readonly required><br>
 						</div>
 					</div>
 					
 					<div style="margin:1%;">
 						<label>Cantidad de dias</label>
-						<select name="cbCantidadDias">
-							<option value="1">1</option>
+						<select name="cbCantidadDias" class="border border-1 rounded-2 p-2 w-10" required>
+							<option value="1" selected>1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
 							<option value="4">4</option>
@@ -122,7 +121,6 @@
 						</select>
 					</div>
 					<div style="margin:1%;">
-					
 						<c:if test="${clienteElegido!=null}">
 							 <input type="submit" class="btn btn-primary" onclick="return confirm('¿Desea confirmar este prestamo?')" value="Finalizar">
 						</c:if>

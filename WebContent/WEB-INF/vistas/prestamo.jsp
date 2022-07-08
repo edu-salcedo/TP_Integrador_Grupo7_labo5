@@ -68,6 +68,7 @@
 							<th scope="col">Libro</th>
 							<th scope="col">Fecha de alta</th>
 							<th scope="col">Estado</th>
+							<th scope="col">Fecha de prestamo</th>
 							<th scope="col"></th>
 						</tr>
 					</thead>

@@ -36,19 +36,6 @@ public class LibroController {
 					vista.addObject("biblioteca",biblioteca);
 					vista.setViewName("libro");
 				}
-				/*
-				biblioteca.getId();
-				biblioteca.getLibro().getIsbn();
-				biblioteca.getLibro().getAutor().getNombre();
-				biblioteca.getLibro().getAutor().getApellido();
-				biblioteca.getLibro().getTitulo();
-				biblioteca.getLibro().getDescripcion();
-				biblioteca.getLibro().getCantidadPaginas();
-				biblioteca.getLibro().getIdioma();
-				biblioteca.getLibro().getFechaLanzamiento();
-				biblioteca.getFechaAlta();
-				biblioteca.getLibro().getGeneros().toString();
-				*/
 			}
 		} 
 		catch (Exception e) 

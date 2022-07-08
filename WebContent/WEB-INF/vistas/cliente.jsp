@@ -49,24 +49,26 @@
 				<div class="fila ">
 					<div class=" m-auto form border p-3 rounded-3">
 						<form action="guardarCliente.html" method="post">
-							<c:choose>
-								<c:when test="${ cliente!=null && cliente!='' }">
+							
 									<div class="col d-flex">
 										<label class="w-100">DNI</label> 
 										 <input type="hidden"value="${cliente.getId()}" name="txtIdCliente">
-										 <input class="form-control"type="text" value="${cliente.getDni()}" 
-										 name="txtDni" <c:if test="${mostrar!=null}">readonly</c:if>>
+										 <input class="form-control"type="text" name="txtDni" required
+										 <c:if test="${cliente!=null && cliente!=''}">value="${cliente.getDni()}"</c:if> 
+										 <c:if test="${mostrar!=null}">readonly</c:if>>
 										 
 									</div>
 									<div class="col d-flex my-2">
 										<label class="w-100">Nombre</label>
-										 <input type="text"class="form-control"value="${cliente.getNombre()}"
-										  name="txtNombre" <c:if test="${mostrar!=null}">readonly</c:if>>
+										 <input type="text"class="form-control" name="txtNombre" required
+										  <c:if test="${cliente!=null && cliente!=''}">value="${cliente.getNombre()}"</c:if>
+										  <c:if test="${mostrar!=null}">readonly</c:if>>
 									</div>
 									<div class="col d-flex">
 										<label class="w-100">Apellido</label> 
-										<input type="text"class="form-control"value="${cliente.getApellido()}" 
-										name="txtApellido" <c:if test="${mostrar!=null}">readonly</c:if>>
+										<input type="text"class="form-control" name="txtApellido" required
+										<c:if test="${cliente!=null && cliente!=''}">value="${cliente.getApellido()}"</c:if>
+										<c:if test="${mostrar!=null}">readonly</c:if>>
 									</div>
 									<div class="col d-flex my-2">
 										<label class="w-100">Nacionalidad</label>
@@ -96,75 +98,35 @@
 									</div>
 									<div class="col d-flex">
 										<label class="w-100">Fecha Nacimiento</label>
-										 <input type="date"class="form-control"value="${cliente.getNacimiento().toString()}"
-										 name="txtNacimiento" <c:if test="${mostrar!=null}">readonly</c:if>>
+										 <input type="date"class="form-control" name="txtNacimiento" required
+										 <c:if test="${cliente!=null && cliente!=''}">value="${cliente.getNacimiento().toString()}"</c:if>
+										 <c:if test="${mostrar!=null}">readonly</c:if>>
 									</div>
 									<div class="col d-flex my-2">
 										<label class="w-100">Direccion</label> 
-										<input type="text"class="form-control"value="${cliente.getDireccion()}" 
-										name="txtDireccion" <c:if test="${mostrar!=null}">readonly</c:if>>
+										<input type="text"class="form-control" name="txtDireccion" required
+										<c:if test="${cliente!=null && cliente!=''}">value="${cliente.getDireccion()}"</c:if>
+										<c:if test="${mostrar!=null}">readonly</c:if>>
 									</div>
 									<div class="col d-flex">
 										<label class="w-100">Localidad</label> 
-										<input type="text" class="form-control"value="${cliente.getLocalidad()}" 
-										name="txtLocalidad" <c:if test="${mostrar!=null}">readonly</c:if>>
+										<input type="text" class="form-control" name="txtLocalidad" required 
+										<c:if test="${cliente!=null && cliente!=''}">value="${cliente.getLocalidad()}"</c:if>
+										<c:if test="${mostrar!=null}">readonly</c:if>>
 									</div>
 									<div class="col d-flex my-2">
 										<label class="w-100">Email</label> 
-										<input type="text" class="form-control" value="${cliente.getEmail()}" 
-										name="txtEmail" <c:if test="${mostrar!=null}">readonly</c:if>>
+										<input type="text" class="form-control" name="txtEmail" required
+										<c:if test="${cliente!=null && cliente!=''}">value="${cliente.getEmail()}"</c:if>
+										<c:if test="${mostrar!=null}">readonly</c:if>>
 									</div>
 									<div class="col d-flex">
 										<label class="w-100">Telefono</label> 
-										<input type="text"class="form-control"value="${cliente.getTelefono()}"
-										 name="txtTelefono" <c:if test="${mostrar!=null}">readonly</c:if>>
+										<input type="text"class="form-control" name="txtTelefono" required
+										<c:if test="${cliente!=null && cliente!=''}">value="${cliente.getTelefono()}"</c:if>
+										<c:if test="${mostrar!=null}">readonly</c:if>>
 									</div>
-								</c:when>
-
-								<c:otherwise>
-									<div  class="col d-flex">
-										<label class="w-100">DNI</label> 
-										<input type="text" pattern="[0-9]{7,8}" maxlength="8" name="txtDni" class="form-control" required>
-		           		                <div class="valid-feedback"></div>
-									</div>
-									<div  class="col d-flex my-2">
-										<label class="w-100">Nombre</label> 
-										<input type="text" name="txtNombre" class="form-control" required>
-									</div>
-									<div  class="col d-flex">
-										<label class="w-100">Apellido</label>
-										 <input type="text" name="txtApellido" class="form-control" required>
-									</div>
-									<div  class="col d-flex my-2">
-										<label class="w-75">Nacionalidad</label>
-										 <select name="cbNacionalidad" class="border border-1 rounded-2 p-2 w-75">
-											<c:forEach items="${listaNacionalidades}" var="item">
-												<option value="${item.id}">${item.descripcion}</option>
-											</c:forEach>
-										</select>
-									</div>
-									<div  class="col d-flex">
-										<label class="w-100">Fecha Nacimiento</label>
-										 <input name="txtNacimiento" type="date" class="form-control" required>
-									</div>
-									<div  class="col d-flex my-2">
-										<label class="w-100">Direccion</label> 
-										<input type="text" class="form-control" name="txtDireccion">
-									</div>
-									<div  class="col d-flex">
-										<label class="w-100">Localidad</label> 
-										<input type="text" class="form-control" name="txtLocalidad" required>
-									</div>
-									<div  class="col d-flex my-2">
-										<label class="w-100">Email</label>
-										 <input type="text" class="form-control" name="txtEmail" required>
-									</div>
-									<div  class="col d-flex">
-										<label class="w-100">Telefono</label> 
-										<input type="text" class="form-control" pattern="[0-9]{8,10}" name="txtTelefono" required>
-									</div>
-								</c:otherwise>
-							</c:choose>
+								
 							<div>
 								<c:if test="${mostrar==null}">
 									<input type="submit" class="mt-3 btn btn-primary " value="Aceptar" name="btnAceptar" onclick="return confirm('¿Desea guardar estos datos?')">
