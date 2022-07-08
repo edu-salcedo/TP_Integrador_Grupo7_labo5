@@ -59,13 +59,6 @@ public class PaginaController {
 		return vista;
 	}
 	
-	@RequestMapping("home.html") // IR A INDEX
-	public ModelAndView vistaIndex() {
-		vista = new ModelAndView();
-		vista.setViewName("home");
-		return vista;
-	}
-	
 	private void inicializarApp() {
 		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
 		

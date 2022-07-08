@@ -1,6 +1,5 @@
 package app.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -13,7 +12,7 @@ import app.servicio.ServicioUsuario;
 
 @Controller
 @SessionAttributes("usuarioLogeado")
-public class UsuarioController {
+public class IndexController {
 	@Autowired
 	@Qualifier("modelAndView")
 	private ModelAndView vista;
@@ -49,4 +48,12 @@ public class UsuarioController {
 		vista.addObject("usuarioLogeado", "");
 		return vista;
 	}
+	
+	@RequestMapping("home.html") // IR A INDEX
+	public ModelAndView vistaIndex() {
+		vista = new ModelAndView();
+		vista.setViewName("home");
+		return vista;
+	}
+
 }

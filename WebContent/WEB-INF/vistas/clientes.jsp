@@ -82,9 +82,10 @@
 								<td>${item.getApellido()}</td>
 								<td>${item.getNacionalidad().getDescripcion()}</td>
 								<td>${item.getEmail()}</td>
-								<td><a href="/cliente.html" class="btn btn-outline-primary"><i
-										class="bi bi-eye"></i></a> <a
-									href="<c:url value='modificarCliente-${item.id}.html' />"
+								<td>
+									<a href="<c:url value='mostrarCliente-${item.id}.html' />" 
+									class="btn btn-outline-primary"><i class="bi bi-eye"></i></a> 
+									<a href="<c:url value='modificarCliente-${item.id}.html' />"
 									class="btn btn-outline-success"><i class="bi bi-pencil"></i></a>
 									<a onclick="return confirm('¿Desea eliminar este usuario?')" href="<c:url value='eliminarCliente-${item.id}.html' />"
 									class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></a>

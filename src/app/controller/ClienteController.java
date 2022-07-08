@@ -40,6 +40,7 @@ public class ClienteController {
 	public ModelAndView vistaClientes() {
 		try 
 		{
+			vista.clear();
 			List<Cliente>lista=servicioCliente.readAll();
 			if(lista!=null)
 				vista.addObject("listaClientes",lista);
@@ -127,20 +128,27 @@ public class ClienteController {
 	
 	@RequestMapping("modificarCliente-{ssoId}.html")
 	public ModelAndView modificarClientes(@PathVariable Integer ssoId) {
-		try 
-		{
-			cliente=servicioCliente.readOne(ssoId);
-			List<Nacionalidad>lista=servicioNacionalidad.readAll();
-			if(lista!=null)
-				vista.addObject("listaNacionalidades",lista);
-			vista.addObject("cliente", cliente);
-			vista.setViewName("cliente");
-			
-		} 
-		catch (Exception e) 
-		{
-			vista.addObject("error",e);
-			vista.setViewName("error");
+		if(ssoId==null)
+			vista.setViewName("clientes");
+		else {
+			try 
+			{
+				cliente=servicioCliente.readOne(ssoId);
+				if(cliente==null)
+					vista.setViewName("clientes");
+				else {
+					List<Nacionalidad>lista=servicioNacionalidad.readAll();
+					if(lista!=null)
+						vista.addObject("listaNacionalidades",lista);
+					vista.addObject("cliente", cliente);
+					vista.setViewName("cliente");
+				}
+			} 
+			catch (Exception e) 
+			{
+				vista.addObject("error",e);
+				vista.setViewName("error");
+			}
 		}
 		return vista;
 	}
@@ -159,6 +167,34 @@ public class ClienteController {
 			vista.setViewName("error");
 		}
 		return vistaClientes();
+	}
+	
+	@RequestMapping("mostrarCliente-{idCliente}.html") 
+	public ModelAndView mostrarClientes(@PathVariable Integer idCliente) {
+		if(idCliente==null)
+			vista.setViewName("clientes");
+		else {
+			try 
+			{
+				cliente=servicioCliente.readOne(idCliente);
+				if(cliente==null)
+					vista.setViewName("clientes");
+				else {
+					List<Nacionalidad>lista=servicioNacionalidad.readAll();
+					if(lista!=null)
+						vista.addObject("listaNacionalidades",lista);
+					vista.addObject("cliente", cliente);
+					vista.addObject("mostrar",true);
+					vista.setViewName("cliente");
+				}
+			} 
+			catch (Exception e) 
+			{
+				vista.addObject("error",e);
+				vista.setViewName("error");
+			}
+		}
+		return vista;
 	}
 	
 }
