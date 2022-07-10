@@ -2,12 +2,13 @@
 
 body{
    font-family:  'Roboto', sans-serif;
+     background-color: #eaeaf1;
 }
 
 h2{
     font-family:  'Roboto', sans-serif;
     font-weight:700;
-    color: rgb(0, 26, 255);
+    color: #8080ff026255;
 }
 
 .upbar{
@@ -27,7 +28,6 @@ h2{
    display: grid;
    grid-template-columns: 1fr 4fr;
    height: 90vh;
-   background-color: #eaeaf1;
 }
 .wrapper{
     position: relative;
@@ -69,6 +69,8 @@ h2{
     padding: 15px 20px;
     height: 90vh;
     width: 100%;
+    margin-bottom: 50px;
+    
 }
 
 .fila{

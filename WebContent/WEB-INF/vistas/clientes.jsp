@@ -14,6 +14,7 @@
 	 crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"/>
   	<link rel="stylesheet" href="./resources/css/StyleMenu.css">
+  	<link rel="stylesheet" href="./resources/css/prestamo.css">
 	
 </head>
 <body>
@@ -28,26 +29,35 @@
 		<div class="wrapper">
 			<div class="sidebar">
 				<ul class="navbar-nav">
-					<i class="fa-solid fa-user-gear admin"></i>
-					<li><a href="home.html" class="nav-link"><i
-							class="fa-solid fa-house-chimney"></i> Home</a></li>
-					<li><a href="biblioteca.html" class="nav-link"><i
-							class="bi bi-collection-fill"></i> Biblioteca</a></li>
-					<li><a href="clientes.html" class="nav-link"><i
-							class="fa-solid fa-user-large"></i> Clientes</a></li>
-					<li><a href="prestamo.html" class="nav-link"><i
-							class="fa-solid fa-hand-holding-dollar"></i> Prï¿½stamos</a></li>
-					<li><a onclick="return confirm('¿Desea cerrar sesion?')" href="logout.html" class="nav-link"><i
-							class="fa-solid fa-right-from-bracket"></i> Cerrar Sesiï¿½n</a></li>
+				     
+				          <i class="fa-solid fa-user-gear admin"></i>
+				     
+					<li>
+                        <a href="home.html" class="nav-link"><i class="fa-solid fa-house-chimney"></i> Home</a>
+                    </li>
+            
+                     <li>
+                         <a href="biblioteca.html" class="nav-link"><i class="bi bi-collection-fill"></i> Biblioteca</a>                                                           
+                     </li>
+                    
+            		<li>
+            		 	<a href="clientes.html" class="nav-link"><i class="fa-solid fa-user-large"></i> Clientes</a>
+            		</li>
+            		<li>
+              			<a href="prestamo.html" class="nav-link"><i class="fa-solid fa-hand-holding-dollar"></i> Préstamos</a>
+            		</li>
+            		<li>
+            		  	<a onclick="return confirm('¿Desea cerrar sesion?')" 
+              			href="logout.html" class="nav-link"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a>
+            		</li>
 				</ul>
 			</div>
 		</div>
+		
 
-
-
-		<div class="main-container text-center">
+		<div class="main-container text-center pb-5">
 			<h2>Lista de Clientes</h2>
-			<div class="border p-1 bg bg-white border border-3 mx-5">
+			<div class="border p-1 bg bg-white border border-3 mx-5 ">
 				<div class="fila">
 					<div class="agregar">
 						<a href="cliente.html"
@@ -56,10 +66,10 @@
 						</a>
 					</div>
 					<form method=get action="filtrarClientes.html">
-						<div class="buscar me-5 mt-2">
-							<input type="text" class=" border rounded-3" name="txtBuscar"
-								placeholder="Buscar" /> <a href=""><i class="bi bi-search "></i></a>
-							<input type="submit" class="btn btn-primary" value="Buscar">
+						<div class="buscar me-5 mt-2  position-relative">
+							<input type="text" class=" border rounded-3" name="txtBuscar"placeholder="Buscar" /> 
+							<a type="submit"><i class="bi bi-search text-info"></i></a>
+							<input type="submit" class="search-icon opacity-0" value="">
 							<a href="clientes.html" class="btn btn-primary">Todos</a>
 						</div>
 					</form>
