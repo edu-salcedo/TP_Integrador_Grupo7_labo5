@@ -29,7 +29,7 @@
 								class="m-auto form-control w-75" name="txtUsuario">
 						</div>
 						<div>
-							<label>Contraseï¿½a</label> <input type="password"
+							<label>Contraseña</label> <input type="password"
 								class="m-auto form-control w-75" name="txtPassword">
 						</div>
 						<div>

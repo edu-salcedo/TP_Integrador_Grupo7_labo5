@@ -85,8 +85,9 @@
 						<td> ${item.getFechaAlta()}</td>
 						<td> ${item.getEstado().getDescripcion()}</td>
 						<td> 
-							<a href="<c:url value='libro-${item.id}.html' />" 
-							class="btn btn-outline-primary"><i class="bi bi-eye"></i></a> 
+							<a href="<c:url value='libro-${item.id}.html' />" class="btn btn-outline-primary">
+							    <i class="bi bi-eye"></i>
+							</a> 
 							<a onclick="return confirm('¿Desea eliminar este Libro?')" class="btn btn-outline-danger" 
 							href="<c:url value='eliminarBiblioteca-${item.id}.html' />"><i class="bi bi-trash-fill"></i></a>
 						</td>

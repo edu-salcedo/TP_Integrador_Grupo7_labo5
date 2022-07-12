@@ -15,8 +15,8 @@
 	 crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"/>
   	<link rel="stylesheet" href="./resources/css/StyleMenu.css">
+  	<link rel="stylesheet" href="./resources/css/prestamo.css">
 </head>
-<body>
 	<div class="upbar d-flex">
 		<img src="./resources/img/logo.png" class="" alt="" />
 		<h4 class="mt-3">Usuario : ${usuarioLogeado}</h4>
@@ -70,18 +70,18 @@
 									</div>
 									<div class="col d-flex my-2">
 										<label class="w-100">Nombre</label>
-										 <input type="text"class="form-control" name="txtNombre" required pattern="^(?=.{3,30}$)[a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$"
+										 <input type="text"class="form-control" name="txtNombre" required pattern="^(?=.{3,30}$)[a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$" 
 										  <c:if test="${cliente!=null && cliente!=''}">value="${cliente.getNombre()}"</c:if>
 										  <c:if test="${mostrar!=null}">readonly</c:if>>
 									</div>
 									<div class="col d-flex">
 										<label class="w-100">Apellido</label> 
-										<input type="text"class="form-control" name="txtApellido" required  pattern="^(?=.{3,30}$)[a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$"
+										<input type="text"class="form-control" name="txtApellido" required  pattern="^(?=.{3,30}$)[a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$" 
 										<c:if test="${cliente!=null && cliente!=''}">value="${cliente.getApellido()}"</c:if>
 										<c:if test="${mostrar!=null}">readonly</c:if>>
 									</div>
 									<div class="col d-flex my-2">
-										<label class="w-100">Nacionalidad</label>
+										<label class="w-75">Nacionalidad</label>
 										<c:choose>
 											<c:when test="${mostrar!=null}">
 												<input type="text"class="form-control"value="${cliente.getNacionalidad().getDescripcion()}" 
@@ -108,7 +108,7 @@
 									</div>
 									<div class="col d-flex">
 										<label class="w-100">Fecha Nacimiento</label>
-										 <input type="date"class="form-control" name="txtNacimiento" required
+										 <input type="date"class="form-control" name="txtNacimiento"
 										 <c:if test="${cliente!=null && cliente!=''}">value="${cliente.getNacimiento().toString()}"</c:if>
 										 <c:if test="${mostrar!=null}">readonly</c:if>>
 									</div>
@@ -120,37 +120,59 @@
 									</div>
 									<div class="col d-flex">
 										<label class="w-100">Localidad</label> 
-										<input type="text" class="form-control" name="txtLocalidad" required 
+										<input type="text" class="form-control" name="txtLocalidad"   required
 										<c:if test="${cliente!=null && cliente!=''}">value="${cliente.getLocalidad()}"</c:if>
 										<c:if test="${mostrar!=null}">readonly</c:if>>
 									</div>
 									<div class="col d-flex my-2">
 										<label class="w-100">Email</label> 
-										<input type="text" class="form-control" name="txtEmail" required 
+										<input type="text" class="form-control" name="txtEmail" required
 										<c:if test="${cliente!=null && cliente!=''}">value="${cliente.getEmail()}"</c:if>
 										<c:if test="${mostrar!=null}">readonly</c:if>>
 									</div>
 									<div class="col d-flex">
 										<label class="w-100">Telefono</label> 
-										<input type="text"class="form-control" name="txtTelefono" required pattern="[0-9]{8,10}"
+										<input type="text"class="form-control" name="txtTelefono" pattern="[0-9]{8,10}" required
 										<c:if test="${cliente!=null && cliente!=''}">value="${cliente.getTelefono()}"</c:if>
 										<c:if test="${mostrar!=null}">readonly</c:if>>
 									</div>
 								
-							<div class= "d-flex justify-content-center align-items-center mt-3">
+							<div class= "d-flex justify-content-around mt-3">
 								<c:if test="${mostrar==null}">
-									<input type="submit" class=" btn btn-primary " value="Aceptar" name="btnAceptar" >
+									<input type="button" class="me-5 btn btn-success" data-bs-toggle="modal" data-bs-target="#modalpopup"  value="Aceptar" name="btnAceptar" >
 								</c:if>
-								<a class="btn btn-primary ms-4  h-25" href="clientes.html" >Volver</a>
 							</div>
 						</form>
+						<div class="position-relative bg bg-warning">
+						     <a class="btn btn-info position-button" href="clientes.html" >Volver</a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	
+	
+	
+	<div class="modal fade" tabindex="-1" id="modalpopup">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content ">
+				<div class="modal-header text-center">
+					<h4 class="modal-title  mx-auto">Atencion!</h4>
+					
+				</div>
+				<div class="modal-body text-center">
+					<p class="">¿estas seguro de realizar cambios?</p>
+				</div>
+			<div class="modal-footer d-flex justify-content-center">
+				<button type="submit" class="btn btn-primary " onclick="form_submit()">Aceptar</button>
+				<button type="button" class="btn btn-danger " data-bs-dismiss="modal">Cancelar</button>
+			</div>
+		</div>
+	</div>
 	<script src="./resources/js/validar.js"></script>
+</div>
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"

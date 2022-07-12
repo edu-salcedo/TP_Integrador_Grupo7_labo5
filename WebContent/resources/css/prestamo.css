@@ -30,3 +30,13 @@
     opacity: 0;
 }
 
+/* estilo del icono de busqueda en la pantalla de clientes */
+
+
+.position-button{
+	position:absolute;
+
+	top:-39px;
+	right:40px;
+
+}

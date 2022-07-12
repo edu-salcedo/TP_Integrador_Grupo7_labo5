@@ -97,8 +97,10 @@
 									class="btn btn-outline-primary"><i class="bi bi-eye"></i></a> 
 									<a href="<c:url value='modificarCliente-${item.id}.html' />"
 									class="btn btn-outline-success"><i class="bi bi-pencil"></i></a>
-									<a onclick="return confirm('¿Desea eliminar este usuario?')" href="<c:url value='eliminarCliente-${item.id}.html' />"
+									<a onclick="return confirm()"  href="<c:url value='eliminarCliente-${item.id}.html' />"
 									class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></a>
+									
+									
 								</td>
 							</tr>
 						</c:forEach>
@@ -107,17 +109,14 @@
 			</div>
 		</div>
 	</div>
-	
+
+   
+   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
 		crossorigin="anonymous"></script>
 </body>
 
-<script>
-	function confirmar() {
-	  confirm("¿Desea eliminar este usuario?");
-	}
-</script>
 
 </html>
