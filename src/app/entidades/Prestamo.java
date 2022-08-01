@@ -3,7 +3,6 @@ package app.entidades;
 import java.io.Serializable;
 import java.sql.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,12 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import app.resources.Config;
-import app.servicio.ServicioPrestamo;
 
 @Entity
 @Table(name="PRESTAMOS")
@@ -51,6 +44,14 @@ public class Prestamo implements Serializable{
 	public Prestamo(int id, Biblioteca biblioteca, Date fechaPrestamo, int cantidadDias, Cliente cliente) {
 		super();
 		this.id = id;
+		this.biblioteca = biblioteca;
+		this.fechaPrestamo = fechaPrestamo;
+		this.cantidadDias = cantidadDias;
+		this.cliente = cliente;
+	}
+	
+	public Prestamo(Biblioteca biblioteca, Date fechaPrestamo, int cantidadDias, Cliente cliente) {
+		super();
 		this.biblioteca = biblioteca;
 		this.fechaPrestamo = fechaPrestamo;
 		this.cantidadDias = cantidadDias;

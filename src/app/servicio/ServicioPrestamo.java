@@ -28,7 +28,10 @@ public class ServicioPrestamo implements IABML <Prestamo>{
 	public List<Prestamo> readAll() {
 		return dao.readAll();
 	}
-
+	
+	public List<Prestamo> readAllByFechaPrestamo(String orden) {
+		return dao.readAllByFechaPrestamo(orden);
+	}
 	@Override
 	public List<Prestamo> readMany(String param) {
 		return dao.readMany(param);

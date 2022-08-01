@@ -3,8 +3,6 @@ package app.dao;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 import app.entidades.Prestamo;
 import app.interfaces.IABML;
@@ -37,7 +35,21 @@ public class DaoPrestamo implements IABML<Prestamo>{
 
 	@Override
 	public List<Prestamo> readAll() {
-		return null;
+		cHibernate = new ConfigHibernate();
+		session = cHibernate.abrirConexion();
+		List<Prestamo>lista=(List<Prestamo>)session.createQuery("FROM Prestamo order by fechaPrestamo desc").list();
+		//order by fechaPrestamo desc
+		cHibernate.cerrarSession();
+		return lista;
+	}
+	
+	public List<Prestamo> readAllByFechaPrestamo(String orden) {
+		cHibernate = new ConfigHibernate();
+		session = cHibernate.abrirConexion();
+		List<Prestamo>lista=(List<Prestamo>)session.createQuery("FROM Prestamo order by fechaPrestamo "+orden).list();
+		//order by fechaPrestamo desc
+		cHibernate.cerrarSession();
+		return lista;
 	}
 
 	@Override

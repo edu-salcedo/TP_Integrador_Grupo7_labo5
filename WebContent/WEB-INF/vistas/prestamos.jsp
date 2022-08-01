@@ -1,21 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Prestamos</title>
-
-	 <script src="https://kit.fontawesome.com/067889c2a3.js" crossorigin="anonymous"></script>	
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<script src="https://kit.fontawesome.com/067889c2a3.js" crossorigin="anonymous"></script>	
 	
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" 
 	rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
 	 crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"/>
-  	  <link rel="stylesheet" href="./resources/css/StyleMenu.css">
-
+  	<link rel="stylesheet" href="./resources/css/StyleMenu.css">
+	<title>Prestamos</title>
 </head>
 <body>
 	<div class="upbar d-flex">
@@ -51,7 +48,7 @@
 		</div>
 
 		<div class="main-container text-center">
-			<h2>Libros prestados</h2>
+			<h2>Prestamos Realizados</h2>
 			<div class="border p-1 bg bg-white border border-3 mx-5">
 				<div class="d-flex justify-content-end">
 					<div class="btn-group dropdown-center">
@@ -61,44 +58,39 @@
 							por</button>
 						<ul class="dropdown-menu">
 							<li><a class="dropdown-item"
-								href="<c:url value='mostrarPorIdEstadoPrestamo-${1}.html' />">Prestados</a></li>
+								href="<c:url value='ordenarPrestamo-${"asc"}.html' />">Ascendente</a></li>
 							<li><a class="dropdown-item"
-								href="<c:url value='mostrarPorIdEstadoPrestamo-${2}.html' />">En
-									bliblioteca</a></li>
-							<li><a class="dropdown-item" href="prestamo.html">Todos</a></li>
+								href="<c:url value='ordenarPrestamo-${"desc"}.html' />">Descendente</a></li>
 						</ul>
 					</div>
 				</div>
+              			<a href="prestamo.html" class="btn btn-success"> Prestar / Devolver</a>
+            		
 				<table class="table border border-3">
 					<thead>
 						<tr class="bg-primary p-2 text-dark bg-opacity-10">
 							<th scope="col">Id</th>
 							<th scope="col">Libro</th>
-							<th scope="col">Fecha de alta</th>
-							<th scope="col">Estado</th>
-							<th scope="col">Fecha de prestamo</th>
+							<th scope="col">Cliente</th>
+							<th scope="col">Fecha Prestamo</th>
+							<th scope="col">Cantidad Dias</th>
 							<th scope="col"></th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${listaBiblioteca}" var="item">
-							<tr>
-								<td>${item.getId()}</td>
-								<td>${item.getLibro().getTitulo()}</td>
-								<td>${item.getFechaAlta()}</td>
-								<td>${item.getEstado().getDescripcion()}</td>
-								<c:choose>
-									<c:when test="${item.getEstado().getId() == 2}">
-										<td><a class="btn btn-primary"
-											href="<c:url value='prestamo-elegirCliente${item.id}.html' />">Prestar</a></td>
-									</c:when>
-									<c:otherwise>
-										<td><a class="btn btn-success" onclick="return confirm('¿Desea devolver este libro?')"
-											href="<c:url value='cambiarEstadoBiblioteca-${item.id}.html' />">Devolver</a></td>
-									</c:otherwise>
-								</c:choose>
-
-							</tr>
+						<c:forEach items="${listaPrestamos}" var="item">
+						<c:choose>
+							<c:when test="${item.getBiblioteca().getEstado().getId()==1}">
+								<tr> 
+									<td>${item.getId()}</td>
+									<td>${item.getBiblioteca().getLibro().getTitulo()}</td>
+									<td>${item.getCliente().getNombre()} ${item.getCliente().getApellido()}</td>
+									<td>${item.getFechaPrestamo()}</td>
+									<td>${item.getCantidadDias()}</td>
+								</tr>
+							</c:when>
+						</c:choose>
+							
 						</c:forEach>
 					</tbody>
 				</table>
@@ -108,6 +100,5 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
 	 integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
 	  crossorigin="anonymous"></script>	
-	
 </body>
 </html>

@@ -39,7 +39,7 @@
             		 	<a href="clientes.html" class="nav-link"><i class="fa-solid fa-user-large"></i> Clientes</a>
             		</li>
             		<li>
-              			<a href="prestamo.html" class="nav-link"><i class="fa-solid fa-hand-holding-dollar"></i> Préstamos</a>
+              			<a href="prestamos.html" class="nav-link"><i class="fa-solid fa-hand-holding-dollar"></i> Préstamos</a>
             		</li>
             		<li>
             		  	<a onclick="return confirm('¿Desea cerrar sesion?')" 

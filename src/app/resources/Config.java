@@ -576,7 +576,7 @@ public class Config {
 		return new Biblioteca(libroElMalestaDeLaCultura(),Util.FormatDate(new Date(2022,6,23)),estadoEnBiblioteca());
 	}
 	@Bean
-	public Biblioteca bibliotecalibroPsicologiaDeLasMasas() {
+	public Biblioteca bibliotecaPsicologiaDeLasMasas() {
 		return new Biblioteca(libroPsicologiaDeLasMasas(),Util.FormatDate(new Date(2022,6,23)),estadoPrestado());
 	}
 	
@@ -621,6 +621,32 @@ public class Config {
 		c.setTelefono("1533114222");
 		c.setLocalidad("Parque Patricios");
 		return c;
+	}
+	
+	@Bean
+	public Prestamo PrestamoMartinFierro() {
+		return new Prestamo(bibliotecaMartinFierro(),Util.Now(),4,clienteGonzaloMartinez());
+	}
+	
+	@Bean
+	public Prestamo prestamoSherlockHolmes() {
+		return new Prestamo(bibliotecaSherlockHolmes(),Util.Now(),3,clienteGonzaloMartinez());
+	}
+	@Bean
+	public Prestamo prestamoLaDivinaComedia() {
+		return new Prestamo(bibliotecaLaDivinaComedia(),Util.Now(),2,clienteCosmeFulanito());
+	}
+	@Bean
+	public Prestamo prestamoEllas() {
+		return new Prestamo(bibliotecaEllas(),Util.Now(),5,clienteCosmeFulanito());
+	}
+	@Bean
+	public Prestamo prestamo1984() {
+		return new Prestamo(biblioteca1984(),Util.Now(),1,clienteHansLanda());
+	}
+	@Bean
+	public Prestamo prestamoPsicologiaDeLasMasas() {
+		return new Prestamo(bibliotecaPsicologiaDeLasMasas(),Util.Now(),2,clienteHansLanda());
 	}
 	
 	//SERVICIOS

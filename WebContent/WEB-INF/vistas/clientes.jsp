@@ -44,7 +44,7 @@
             		 	<a href="clientes.html" class="nav-link"><i class="fa-solid fa-user-large"></i> Clientes</a>
             		</li>
             		<li>
-              			<a href="prestamo.html" class="nav-link"><i class="fa-solid fa-hand-holding-dollar"></i> Préstamos</a>
+              			<a href="prestamos.html" class="nav-link"><i class="fa-solid fa-hand-holding-dollar"></i> Préstamos</a>
             		</li>
             		<li>
             		  	<a onclick="return confirm('¿Desea cerrar sesion?')" 
@@ -68,8 +68,8 @@
 					<form method=get action="filtrarClientes.html">
 						<div class="buscar me-5 mt-2  position-relative">
 							<input type="text" class=" border rounded-3" name="txtBuscar"placeholder="Buscar" /> 
-							<a type="submit"><i class="bi bi-search text-info"></i></a>
-							<input type="submit" class="search-icon opacity-0" value="">
+							<!-- <a type="submit"><i class="bi bi-search text-info"></i></a> -->
+							<input type="submit" class="btn btn-primary" value="Buscar">
 							<a href="clientes.html" class="btn btn-primary">Todos</a>
 						</div>
 					</form>
@@ -97,7 +97,7 @@
 									class="btn btn-outline-primary"><i class="bi bi-eye"></i></a> 
 									<a href="<c:url value='modificarCliente-${item.id}.html' />"
 									class="btn btn-outline-success"><i class="bi bi-pencil"></i></a>
-									<a onclick="return confirm()"  href="<c:url value='eliminarCliente-${item.id}.html' />"
+									<a onclick="return confirm('Desea eliminar este cliente?')"  href="<c:url value='eliminarCliente-${item.id}.html' />"
 									class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></a>
 									
 									

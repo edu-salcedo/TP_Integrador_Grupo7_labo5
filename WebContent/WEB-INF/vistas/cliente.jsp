@@ -40,7 +40,7 @@
 					</li>
 							
 					<li>
-					    <a href="prestamo.html" class="nav-link"><i class="fa-solid fa-hand-holding-dollar"></i> Préstamos</a>
+					    <a href="prestamos.html" class="nav-link"><i class="fa-solid fa-hand-holding-dollar"></i> Préstamos</a>
 					</li>
 							
 					<li>

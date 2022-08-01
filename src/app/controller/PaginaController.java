@@ -6,6 +6,7 @@ import app.entidades.Estado;
 import app.entidades.Genero;
 import app.entidades.Libro;
 import app.entidades.Nacionalidad;
+import app.entidades.Prestamo;
 import app.entidades.Usuario;
 import app.resources.Config;
 import app.servicio.ServicioAutor;
@@ -15,6 +16,7 @@ import app.servicio.ServicioEstado;
 import app.servicio.ServicioGenero;
 import app.servicio.ServicioLibro;
 import app.servicio.ServicioNacionalidad;
+import app.servicio.ServicioPrestamo;
 import app.servicio.ServicioUsuario;
 
 import java.sql.Date;
@@ -51,6 +53,8 @@ public class PaginaController {
 	private ServicioUsuario su;
 	@Autowired @Qualifier("servicioEstado")
 	private ServicioEstado se;
+	@Autowired @Qualifier("servicioPrestamo")
+	private ServicioPrestamo sp;
 	
 	@RequestMapping("iniciar_app.html")
 	public ModelAndView iniciarApp() {
@@ -125,7 +129,7 @@ public class PaginaController {
 		sb.create((Biblioteca)appContext.getBean("bibliotecaFahrenheit451"));
 		sb.create((Biblioteca)appContext.getBean("biblioteca1984"));
 		sb.create((Biblioteca)appContext.getBean("bibliotecaElMalestaDeLaCultura"));
-		sb.create((Biblioteca)appContext.getBean("bibliotecalibroPsicologiaDeLasMasas"));
+		sb.create((Biblioteca)appContext.getBean("bibliotecaPsicologiaDeLasMasas"));
 		
 		sc.create((Cliente)appContext.getBean("clienteCosmeFulanito"));
 		sc.create((Cliente)appContext.getBean("clienteHansLanda"));
@@ -135,6 +139,13 @@ public class PaginaController {
 		su.create((Usuario)appContext.getBean("usuarioEdu"));
 		su.create((Usuario)appContext.getBean("usuarioCris"));
 		su.create((Usuario)appContext.getBean("usuarioAle"));
+		
+		sp.create((Prestamo)appContext.getBean("PrestamoMartinFierro"));
+		sp.create((Prestamo)appContext.getBean("prestamoSherlockHolmes"));
+		sp.create((Prestamo)appContext.getBean("prestamoLaDivinaComedia"));
+		sp.create((Prestamo)appContext.getBean("prestamoEllas"));
+		sp.create((Prestamo)appContext.getBean("prestamo1984"));
+		sp.create((Prestamo)appContext.getBean("prestamoPsicologiaDeLasMasas"));
 		
 		System.out.println("Inicializacion Terminada!");
 		((ConfigurableApplicationContext)(appContext)).close();
