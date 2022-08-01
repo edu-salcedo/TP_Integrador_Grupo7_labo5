@@ -31,35 +31,29 @@
     height:100%;
     display:block;
     align-items: center;
-    opacity:70%;
 
 }
 
 .frase{
-	position:relative;
-	 z-index:1;
-
+ 
+   margin-left:10px;
 }
-
-.frase h1{
-	color:white;	
-	margin:auto;
-	width:50%;
+.frase>h2{
+	color:red;
+	width:35%;
 	height:30%;
 	margin-top:5rem;
-	 font-family:  'Roboto', sans-serif;
+	font-family:  'Roboto', sans-serif;
     font-weight: 600;
     font-size:60px;
     color:rgb(4, 4, 134);
-    z-index:1;
-    
+  
 }
 
-.frase h2{
+.frase p{
 	color:red;	
 	width:50%;
 	height:30%;
-	margin:auto;
     text-align:center;
 }
 

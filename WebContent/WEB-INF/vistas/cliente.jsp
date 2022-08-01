@@ -17,6 +17,8 @@
   	<link rel="stylesheet" href="./resources/css/StyleMenu.css">
   	<link rel="stylesheet" href="./resources/css/prestamo.css">
 </head>
+
+     <jsp:include page="Modal.jsp"></jsp:include>
 	<div class="upbar d-flex">
 		<img src="./resources/img/logo.png" class="" alt="" />
 		<h4 class="mt-3">Usuario : ${usuarioLogeado}</h4>
@@ -70,13 +72,13 @@
 									</div>
 									<div class="col d-flex my-2">
 										<label class="w-100">Nombre</label>
-										 <input type="text"class="form-control" name="txtNombre" required pattern="^(?=.{3,30}$)[a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$" 
+										 <input type="text"class="form-control" name="txtNombre" required pattern="^(?=.{3,30}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$" 
 										  <c:if test="${cliente!=null && cliente!=''}">value="${cliente.getNombre()}"</c:if>
 										  <c:if test="${mostrar!=null}">readonly</c:if>>
 									</div>
 									<div class="col d-flex">
 										<label class="w-100">Apellido</label> 
-										<input type="text"class="form-control" name="txtApellido" required  pattern="^(?=.{3,30}$)[a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$" 
+										<input type="text"class="form-control" name="txtApellido" required  pattern="^(?=.{3,30}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$" 
 										<c:if test="${cliente!=null && cliente!=''}">value="${cliente.getApellido()}"</c:if>
 										<c:if test="${mostrar!=null}">readonly</c:if>>
 									</div>
@@ -139,9 +141,15 @@
 								
 							<div class= "d-flex justify-content-around mt-3">
 								<c:if test="${mostrar==null}">
-									<input type="button" class="me-5 btn btn-success" data-bs-toggle="modal" data-bs-target="#modalpopup"  value="Aceptar" name="btnAceptar" >
+									<input type="button" class=" btn1 me-5 btn btn-success" value="Aceptar" name="btnAceptar" >
 								</c:if>
-							</div>
+							   <c:if test="${mostrar!=null}">
+								  <div class="opacity-0">
+									 <h3 class="">h</h3>
+								  </div>
+							  </c:if>
+
+						</div>
 						</form>
 						<div class="position-relative bg bg-warning">
 						     <a class="btn btn-info position-button" href="clientes.html" >Volver</a>
@@ -152,24 +160,7 @@
 		</div>
 	</div>
 	
-	
-	
-	<div class="modal fade" tabindex="-1" id="modalpopup">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content ">
-				<div class="modal-header text-center">
-					<h4 class="modal-title  mx-auto">Atencion!</h4>
-					
-				</div>
-				<div class="modal-body text-center">
-					<p class="">¿estas seguro de realizar cambios?</p>
-				</div>
-			<div class="modal-footer d-flex justify-content-center">
-				<button type="submit" class="btn btn-primary " onclick="form_submit()">Aceptar</button>
-				<button type="button" class="btn btn-danger " data-bs-dismiss="modal">Cancelar</button>
-			</div>
-		</div>
-	</div>
+
 	<script src="./resources/js/validar.js"></script>
 </div>
 

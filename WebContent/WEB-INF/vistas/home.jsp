@@ -51,8 +51,8 @@
 		 
 	<div class="home-container">
 	   <div class="frase">
-		      <h1>Siempre imaginé que el Paraíso sería algún tipo de biblioteca.</h1>			      
-		      <h2 ><b>Jorge Luis Borges</b></h2>
+		      <h2>Siempre imaginé que el Paraíso sería algún tipo de biblioteca.</h2>			      
+		      <p ><b>Jorge Luis Borges</b></p>
 	   </div>    
 		
 		</div>
